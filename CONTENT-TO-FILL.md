@@ -1,105 +1,69 @@
-# Things only Michael can fill in
+# What is left, and who can do it
 
-Everything currently on the site is either verifiable from the paintings
-themselves or was supplied directly. **Nothing on the site is invented.** That
-also means several normal portfolio facts are simply missing. Here they are,
-roughly in order of how much they matter.
+The site is live at **michael-grigoryan.com**. Everything on it is either
+verifiable from the paintings themselves, taken from Michael's CV and Instagram,
+or written by him. **Nothing on the site is invented.**
 
-## 1. ~~Real titles~~ — done
+These are the remaining gaps. Every one of them needs an answer only Michael
+has — that is why they are still here rather than filled in.
 
-Taken from his own Instagram captions, where every work is titled in Armenian:
+## 1. The sizes of the works
 
-| file | title | year |
-|---|---|---|
-| `harbour-village` | «Հանգիստ» *Rest* | 2026 |
-| `armenian-street` | «Երևան» *Yerevan* | 2026 |
-| `old-town-amber-sky` | «Սուրբ Աննա» *Saint Anne* | 2026 |
-| `town-by-the-sea` | «Կիրակի» *Sunday* | 2025 |
-| `carnival-town` | «Քաղաք» *City* | 2023 |
+The only field still empty. Fill `size` for each work in the admin panel
+(**Works → Edit**), e.g. `42 × 29.7 cm`. It stays hidden while empty rather than
+showing something wrong. A collector's first two questions are always "when" and
+"how big", and "when" is already answered.
 
-The site shows the Armenian title with the English translation beside it in
-italics. **Check the translations with Michael** — they are literal, and he may
-have meant something more specific (Հանգիստ can be rest, calm or repose;
-Սուրբ Աննա is presumably the church in the picture).
+## 2. Confirm the birth year
 
-## 2. Sizes
+The About text says **b. 2002**, inferred from the `.02` in his email address and
+from his being 24 in August 2026. Both point the same way, but nobody has
+actually said it. One question settles it.
 
-**Titles, years and photographs are all done.** **Sizes are not** — fill `size` in
-the `WORKS` array; it stays hidden while empty rather than wrong. A collector's
-first two questions are always "when" and "how big".
+## 3. Confirm what the medium really is
 
-Also confirm the medium. The site says *ink, marker and gouache on paper*, which
-is what the surfaces look like. If it is acrylic, or coloured pencil, or a
-specific marker brand, say so precisely — it affects what a gallery can promise
-a buyer about how the work will age.
+The site says *ink, marker and gouache on paper*, which is what the surfaces look
+like. If it is acrylic, or coloured pencil, or a particular marker, say so
+precisely — it decides what a gallery can honestly promise a buyer about how the
+work will age. Related: most felt and alcohol markers are not lightfast.
 
-## 3. ~~A real email address~~ — done
+## 4. Is the mountain in «Մայիս» Ararat?
 
-`Michael.Grigoryan.02@gmail.com`, from his CV.
+It reads that way — a snow peak behind the town, seen from Yerevan. It is not
+written as Ararat anywhere on the site, because nobody has confirmed it. If it
+is, it is worth saying: it changes how the picture reads.
 
-His **phone number and home street address are also on the CV and are
-deliberately not on the site.** An email address is a normal thing for an artist
-to publish; a home address is not, and a phone number invites spam. If he wants
-the phone on there it is his call to make, not mine.
+## 5. Did EVN Magazine run «Երևան»?
 
-## 4. Biography facts — mostly done
+His Instagram post tags **@evnmag** — ԵՐԵՎԱՆ magazine, a real Yerevan
+publication with a reader-submission series. If they published it, **that is his
+first publication credit** and it belongs on the site and in conversation.
 
-Taken from the CV and now on the site: Yerevan; BA in computer graphics from the
-State Academy of Fine Arts of Armenia, 2020–2024; works as a graphic and web
-designer alongside the drawings.
-
-Still missing:
-
-- **Birth year — confirm.** The site says `b. 2002`, inferred from his email
-  handle and from being 24 in August 2026. Both point the same way, but nobody
-  has actually said it. Check before anyone reads it as fact.
-- Any exhibition, group show, fair or competition, however small
-- Anything sold, and to where — even "private collections, Armenia and Italy"
-
-## 5. ~~Better photographs~~ — done
-
-Both weak images were replaced with flat reshoots: «Մայիս» at 4160 × 2886 and
-«Երևան» photographed out of its frame. Both were straightened and cropped to the
-sheet. The remaining four are the original phone photographs, rotated upright —
-usable, and a flat daylight reshoot would still improve them. See the photography
-notes in `README.md`.
-
-## 6. More work
-
-Five pieces is a taster, not a body of work. Ten to fifteen makes the site read
-as a practice rather than a hobby. If there are earlier or unfinished pieces,
-they are still worth photographing now — they show development, which is
-exactly what people looking at a young artist want to see.
-
-## 7. ~~Two links to fix~~ — partly done
-
-- The **Instagram is now public**, so the link works. Six paintings are posted,
-  from November 2023 to May 2026.
-- The **Saatchi Art profile** still has two works and no biography. Either fill
-  it in properly — same titles, same photographs, same bio as the site — or drop
-  the link. A half-empty profile is worse than no profile.
-- **Behance** (`behance.net/Michael_Grigoryan`) is now linked from the site. It
-  currently holds one design project, STRIKE, and no paintings. That is fine —
-  it is his design portfolio — but it means the site is the only place the
-  paintings live together.
-
-## 8. The other carousel slides
+## 6. The other carousel slides
 
 Two of his Instagram posts — «Մայիս» and «Երևան» — are carousels holding more
-than one image, and the extra slides are not reachable without logging in. There
-may be more work, or in-situ shots, sitting in them. Worth a look.
+than one image, and the extra slides cannot be reached without logging in. There
+may be more work sitting in them.
 
-## 9. Two things to verify
+## 7. More work, and better photographs of four
 
-**Is the mountain in «Մայիս» Ararat?** It reads that way — a snow peak behind the
-town, seen from Yerevan — but I have not written it as Ararat anywhere, because
-nobody has said so. If it is, say so: it changes how the picture reads, and it is
-the kind of detail people remember.
+Six pieces is a body of work beginning, not a finished one. Ten to fifteen makes
+the site read as a practice.
 
-## 10. One thing to verify
+«Մայիս» and «Երևան» are proper flat photographs. The other four are the original
+phone photographs, rotated upright — usable, but a flat daylight reshoot would
+visibly improve all four. See the photography notes in `README.md`.
 
-His «Երևան» post tags **@evnmag** — ԵՐԵՎԱՆ magazine, a real Yerevan publication
-with about 8,800 followers and a reader-submission series. I could not confirm
-whether they actually ran the piece. **If they did, that is his first
-publication credit** and it belongs on the site and in conversation. Worth one
-question to him.
+## 8. The Saatchi Art profile
+
+Still two works and no biography. Either fill it in properly — same titles, same
+photographs, same text as the site — or drop the link from the Contact section.
+A half-empty profile is worse than no profile.
+
+## 9. Tidy up an old repository
+
+`MikMarie27/michael-grigoryan-site` on GitHub was created by accident from the
+wrong folder, so it contains a listing of unrelated project folder names and an
+outdated copy of the site. It is private, and it holds no project code — only
+names. The live site is **`MikMarie27/michael-grigoryan`**. The old one can be
+deleted.

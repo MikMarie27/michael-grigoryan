@@ -10,19 +10,14 @@ with no network access. **The admin only works once the site is deployed.**
 
 ---
 
-## What you need first
+## It is already set up
 
-1. **The site in a GitHub repository.** From this folder:
+- **Repository:** `MikMarie27/michael-grigoryan`
+- **Host:** GitHub Pages, serving the `main` branch
+- **Domain:** michael-grigoryan.com
 
-```bash
-git init && git add -A && git commit -m "Michael Grigoryan portfolio" && gh repo create michael-grigoryan-site --private --source=. --push
-```
-
-2. **A host that rebuilds on push.** Netlify or GitHub Pages both work and both
-   are free. Connect the repository once; after that every save from the admin
-   panel republishes the site by itself.
-
-3. **A token for Michael** — see below.
+Every save from the admin panel commits to that repository, and GitHub Pages
+rebuilds the site within about a minute. Nothing else has to be run.
 
 ## Making Michael a token
 
@@ -32,14 +27,18 @@ on his own GitHub account, so it belongs to him.
 1. GitHub → **Settings → Developer settings → Personal access tokens → Fine-grained tokens**
 2. **Generate new token.** Name it something like "site admin". Set an expiry —
    90 days is sensible; he can make a new one when it lapses.
-3. **Repository access → Only select repositories** → pick this repository.
+3. **Repository access → Only select repositories** → pick `michael-grigoryan`.
 4. **Permissions → Repository permissions → Contents → Read and write.**
    Leave everything else on "No access".
 5. Generate, and copy it. GitHub shows it once.
 
-Then open https://michael-grigoryan.com/admin/, enter `owner/repository`, the branch (usually `main`), and
-paste the token. That is the whole sign-in.
+Then open https://michael-grigoryan.com/admin/ and enter:
 
+- **Repository:** `MikMarie27/michael-grigoryan`
+- **Branch:** `main`
+- **Access token:** the one just generated
+
+That is the whole sign-in. 
 ## How the login actually works
 
 There is no password check in the JavaScript — that kind of check is decoration,

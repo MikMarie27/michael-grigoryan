@@ -79,22 +79,11 @@ and cropped to the sheet.
 
 ## Deploy
 
-Any static host works. Drag the folder onto [Netlify Drop](https://app.netlify.com/drop)
-and it is live in about thirty seconds, or:
+Already deployed. `MikMarie27/michael-grigoryan` on GitHub, served by GitHub
+Pages from `main`, at **michael-grigoryan.com**. Pushing to `main` republishes
+it; so does pressing Publish in the admin panel.
 
-```bash
-npx vercel deploy --prod
-```
-
-For GitHub Pages: push the folder to a repository and enable Pages on the
-default branch, root folder.
-
-**Deploy from a Git repository rather than by dragging the folder** if Michael is
-going to use the admin panel — it saves by committing to the repository, so the
-host has to be watching one. See `ADMIN.md`.
-
-Then buy a domain (`michael-grigoryan.com` is roughly $15–30/year) and point it
-at the host. The domain is worth paying for — it is what goes on a business card.
+The `CNAME` file is what tells Pages the custom domain — leave it in place.
 
 ## One-file version
 
