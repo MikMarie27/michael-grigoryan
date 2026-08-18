@@ -44,20 +44,28 @@ right space so the page does not jump while images load.
 ## The process film
 
 `media/mayis-process.mp4` is a time-lapse of «Մայիս» being drawn, and it is the
-first thing on the page. It is encoded from the untouched original in
-`images/originals/` at double speed, 832 × 576, 60fps, no audio (the original was
-silent), ~1.6 MB — about the same bitrate as the source, for half the duration:
+first thing on the page. It comes from the camera original in
+`images/originals/mayis-process.mov` — 2160 × 3096, 25.7 Mbps — encoded at double
+speed to 1280 × 894, 30fps, no audio, about 2.9 MB:
 
 ```bash
-ffmpeg -i images/originals/mayis-process.mp4 -an -vf "setpts=0.5*PTS" -r 60 -c:v libx264 -crf 21 -preset veryslow -pix_fmt yuv420p -movflags +faststart media/mayis-process.mp4
+ffmpeg -i images/originals/mayis-process.mov -an -vf "setpts=0.5*PTS,scale=1280:-2:flags=lanczos" -r 30 -c:v libx264 -crf 26 -preset veryslow -pix_fmt yuv420p -movflags +faststart media/mayis-process.mp4
 ```
 
-The poster frame is the last frame of the source, so the still shows the finished
-drawing:
+The poster frame is the last frame of the original, so the still shows the
+finished drawing:
 
 ```bash
-ffmpeg -sseof -0.15 -i images/originals/mayis-process.mp4 -frames:v 1 -q:v 2 media/mayis-poster.jpg
+ffmpeg -sseof -0.2 -i images/originals/mayis-process.mov -frames:v 1 -q:v 2 /tmp/poster.jpg && sips -Z 1400 -s formatOptions 84 /tmp/poster.jpg --out media/mayis-poster.jpg
 ```
+
+**Keep the camera original safe.** `images/originals/mayis-process.mov` is 52 MB,
+so it is deliberately *not* in the repository — it lives on disk only and should
+be backed up somewhere. Everything else is derived from it, and a phone-messenger
+copy of the same film is far softer: the first version of this site used one and
+the line work was mush.
+
+If you change the size, update `hero.w` and `hero.h` in `content.json` to match.
 
 It autoplays muted and loops. If the browser refuses — a background tab, low-power
 mode, a data saver — it retries when the page becomes visible, and failing that

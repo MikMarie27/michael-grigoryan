@@ -1,2 +1,5 @@
 .DS_Store
 dist/
+
+# camera masters — kept on disk, too large for the repo
+images/originals/*.mov
