@@ -1,0 +1,148 @@
+{
+  "site": {
+    "name": "Michael Grigoryan",
+    "lede": "Cities that were never built, drawn as if seen from everywhere at once.",
+    "meta": "Works on paper · Yerevan",
+    "cta": "See the work"
+  },
+  "hero": {
+    "video": "media/mayis-process.mp4",
+    "poster": "media/mayis-poster.jpg",
+    "w": 832,
+    "h": 576,
+    "caption": "«Մայիս» — first pencil line to finished sheet.",
+    "alt": "Time-lapse of the drawing «Մայիս» being made, from pencil construction lines to finished colour."
+  },
+  "works": [
+    {
+      "slug": "mayis",
+      "title": "«Մայիս»",
+      "titleEn": "May",
+      "year": "2026",
+      "size": "",
+      "medium": "Ink, marker and gouache on paper",
+      "alt": "A steep town of stacked coloured houses and a tall striped smokestack trailing dark smoke, set between snow-capped mountains under a pale green sky streaked with pink.",
+      "tw": 900,
+      "th": 624,
+      "fw": 1800,
+      "fh": 1248
+    },
+    {
+      "slug": "harbour-village",
+      "title": "«Հանգիստ»",
+      "titleEn": "Rest",
+      "year": "2026",
+      "size": "",
+      "medium": "Ink, marker and gouache on paper",
+      "alt": "A steep harbour village of red, coral and ochre houses stacked above a stone quay, with small boats on turquoise water and a sky of magenta and violet ribbons.",
+      "tw": 900,
+      "th": 627,
+      "fw": 1800,
+      "fh": 1254
+    },
+    {
+      "slug": "armenian-street",
+      "title": "«Երևան»",
+      "titleEn": "Yerevan",
+      "year": "2026",
+      "size": "",
+      "medium": "Ink, marker and gouache on paper",
+      "alt": "A spring street scene under a burning red and pink sky with Armenian lettering in the clouds: yellow, red and blue houses, blossoming trees, an antique shop, and two figures walking a pale road.",
+      "tw": 638,
+      "th": 900,
+      "fw": 1276,
+      "fh": 1800
+    },
+    {
+      "slug": "old-town-amber-sky",
+      "title": "«Սուրբ Աննա»",
+      "titleEn": "Saint Anne",
+      "year": "2026",
+      "size": "",
+      "medium": "Ink, marker and gouache on paper",
+      "alt": "An old quarter with a domed church, scaffolding and chimney smoke, drawn from a tilted overhead viewpoint beneath a sky of amber and gold bands.",
+      "tw": 900,
+      "th": 640,
+      "fw": 1800,
+      "fh": 1279
+    },
+    {
+      "slug": "town-by-the-sea",
+      "title": "«Կիրակի»",
+      "titleEn": "Sunday",
+      "year": "2025",
+      "size": "",
+      "medium": "Ink, marker and gouache on paper",
+      "alt": "A densely packed town seen from above at a tilt, tiled roofs and facades folding into one another, with a band of blue patterned water along the top edge.",
+      "tw": 900,
+      "th": 627,
+      "fw": 1800,
+      "fh": 1254
+    },
+    {
+      "slug": "carnival-town",
+      "title": "«Քաղաք»",
+      "titleEn": "City",
+      "year": "2023",
+      "size": "",
+      "medium": "Ink, marker and gouache on paper",
+      "alt": "A crowded painted town of brick and tile with a red and white striped circus tent at one edge, shop signs, a garage and a hotel, beneath a pale sky of rose and grey ribbons.",
+      "tw": 900,
+      "th": 611,
+      "fw": 1800,
+      "fh": 1223
+    }
+  ],
+  "about": {
+    "opening": "A city is a thing you can only ever see part of at a time. Michael Grigoryan draws all of it at once.",
+    "paragraphs": [
+      "His streets lean toward you and away from you in the same breath. Roofs pile onto roofs. A staircase climbs, thinks better of it, and turns back into the wall it came from. There is no single place to stand in these pictures, which is the point: they are how a city sits in memory rather than how it sits on a map.",
+      "Nothing is left blank. Every roof is counted out tile by tile, every wall brick by brick, and when the buildings run out the sky takes the job on — not as air but as ribbon, flat bands of magenta and violet and ochre laid over the town like a lid. Stay with a picture and it starts handing things over: a cat on a parapet, washing strung between windows, a pear tree with no business being there, an antique shop with its sign in Armenian, a boy crossing an empty road while nobody watches.",
+      "> Yerevan is a pink city. Pink is my favourite colour and Yerevan is my favourite city, and I can make the city even more colourful, even pinker — and hide a lot of secrets and small things inside the picture.",
+      "So the cities are invented, but not out of nothing. A snow peak stands up behind a factory chimney. A shopfront answers in Armenian. Somewhere between the harbour that could be Liguria and the spring street that could only be Yerevan, the two stop being different places.",
+      "Everything begins in pencil — the perspective, the roof lines, the run of the street — and is then filled in, block by block, until no paper is left showing.",
+      "> I was impressed by Egon Schiele. His work is very different from mine — darker, different — but it stayed with me. That, and my love for Yerevan, is why I started to draw my favourite picture. The city was the start of my style, and of the line. I want to continue the line. I have found the style that is mine.",
+      "Michael Grigoryan (b. 2002) lives and works in Yerevan. He studied at the State Academy of Fine Arts of Armenia, graduating in 2024 with a degree in computer graphics, and works as a graphic and web designer alongside the drawings. The training is visible in the flat colour and the constructed compositions. Everything else is done by hand, at close range, without shortcuts."
+    ],
+    "facts": [
+      {
+        "label": "Medium",
+        "value": "Ink, marker and gouache on paper"
+      },
+      {
+        "label": "Subject",
+        "value": "Cityscape, architecture, imagined places"
+      },
+      {
+        "label": "Based in",
+        "value": "Yerevan, Armenia"
+      },
+      {
+        "label": "Education",
+        "value": "BA, Computer Graphics — State Academy of Fine Arts of Armenia, 2024"
+      },
+      {
+        "label": "Languages",
+        "value": "Armenian, Russian, English"
+      }
+    ]
+  },
+  "contact": {
+    "line": "For enquiries about available work, commissions and exhibitions.",
+    "email": "Michael.Grigoryan.02@gmail.com",
+    "links": [
+      {
+        "label": "Instagram",
+        "url": "https://www.instagram.com/mish__333"
+      },
+      {
+        "label": "Saatchi Art",
+        "url": "https://www.saatchiart.com/account/profile/3008191"
+      },
+      {
+        "label": "Behance",
+        "url": "https://www.behance.net/Michael_Grigoryan"
+      }
+    ]
+  }
+}

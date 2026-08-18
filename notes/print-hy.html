@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="hy">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Հանդիպում Տիգրան Ցիտողձյանի հետ</title>
+<style>
+:root{
+  --paper:#fbfaf8;
+  --card:#ffffff;
+  --ink:#171419;
+  --ink-2:#4d4752;
+  --ink-3:#867e8d;
+  --rule:#e4dfda;
+  --accent:#b31752;
+  --accent-soft:#fdeef4;
+  --flag:#8a5a00;
+  --flag-soft:#fdf3e0;
+  --shadow:0 1px 2px rgb(23 20 25/.04), 0 10px 28px -14px rgb(23 20 25/.22);
+  --serif: ui-serif, "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#131116; --card:#1b181f; --ink:#f2eff3; --ink-2:#b0a9b6; --ink-3:#7f7887;
+    --rule:#2e2933; --accent:#ff5e97; --accent-soft:#2c1220;
+    --flag:#e2a844; --flag-soft:#2a2113;
+    --shadow:0 1px 2px rgb(0 0 0/.5), 0 14px 34px -16px rgb(0 0 0/.75);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#131116; --card:#1b181f; --ink:#f2eff3; --ink-2:#b0a9b6; --ink-3:#7f7887;
+  --rule:#2e2933; --accent:#ff5e97; --accent-soft:#2c1220;
+  --flag:#e2a844; --flag-soft:#2a2113;
+  --shadow:0 1px 2px rgb(0 0 0/.5), 0 14px 34px -16px rgb(0 0 0/.75);
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:1.0625rem; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:44rem; margin:0 auto; padding:clamp(2rem,6vw,4.5rem) clamp(1.1rem,5vw,2rem) 5rem;}
+
+.eyebrow{
+  font-size:.75rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--accent); margin:0 0 .9rem; font-weight:600;
+}
+h1{
+  font-family:var(--serif); font-weight:400;
+  font-size:clamp(2.1rem,1.5rem+2.6vw,3.25rem); line-height:1.05;
+  letter-spacing:-.02em; margin:0 0 .7rem; text-wrap:balance;
+}
+.standfirst{
+  font-family:var(--serif); font-size:clamp(1.05rem,1rem+.4vw,1.25rem);
+  color:var(--ink-2); margin:0 0 2.5rem; max-width:34ch; line-height:1.45;
+}
+
+section{border-top:1px solid var(--rule); padding-top:2rem; margin-top:2.5rem;}
+h2{
+  font-family:var(--serif); font-weight:400; font-size:1.6rem; line-height:1.2;
+  letter-spacing:-.01em; margin:0 0 1.1rem; text-wrap:balance;
+  display:flex; gap:.7rem; align-items:baseline;
+}
+h2 .n{
+  font-family:var(--sans); font-size:.75rem; font-weight:600;
+  letter-spacing:.08em; color:var(--ink-3);
+  font-variant-numeric:tabular-nums; flex:none;
+}
+@media (min-width:56rem){
+  h2{position:relative;}
+  h2 .n{position:absolute; left:-3.5rem; top:.55rem;}
+}
+h3{font-size:.98rem; font-weight:650; margin:1.6rem 0 .4rem; letter-spacing:-.005em;}
+p{margin:0 0 1rem; text-wrap:pretty;}
+strong{font-weight:650;}
+em{font-style:italic;}
+ul,ol{margin:0 0 1rem; padding-left:1.35rem;}
+li{margin-bottom:.55rem;}
+ol{counter-reset:none;}
+
+.pull{
+  font-family:var(--serif); font-size:1.2rem; line-height:1.4;
+  color:var(--ink); border-left:2px solid var(--accent);
+  padding:.15rem 0 .15rem 1.1rem; margin:1.4rem 0;
+}
+
+.card{
+  background:var(--card); border:1px solid var(--rule); border-radius:6px;
+  padding:1.2rem 1.3rem; margin:1.4rem 0; box-shadow:var(--shadow);
+}
+.card p:last-child,.card ul:last-child,.card ol:last-child{margin-bottom:0;}
+
+.flag{
+  display:inline-block; font-size:.68rem; font-weight:700; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--flag); background:var(--flag-soft);
+  border-radius:3px; padding:.12rem .42rem; margin-right:.45rem;
+  vertical-align:.09em; white-space:nowrap;
+}
+.qs{list-style:none; padding:0; margin:0; counter-reset:q;}
+.qs li{
+  counter-increment:q; position:relative;
+  padding:.75rem 0 .75rem 2.3rem; margin:0;
+  border-bottom:1px solid var(--rule);
+}
+.qs li:last-child{border-bottom:0;}
+.qs li::before{
+  content:counter(q); position:absolute; left:0; top:.85rem;
+  font-size:.78rem; font-weight:600; color:var(--ink-3);
+  font-variant-numeric:tabular-nums;
+}
+.qs .say{display:block; color:var(--ink-2); font-size:.95rem; margin-top:.2rem;}
+
+.no{ background:var(--accent-soft); border:1px solid var(--rule);
+  border-radius:6px; padding:1rem 1.2rem; margin:1.4rem 0;}
+.no p{margin:0;}
+
+.check{list-style:none; padding:0; margin:0;}
+.check li{
+  display:flex; gap:.75rem; align-items:flex-start;
+  padding:.6rem 0; border-bottom:1px solid var(--rule); margin:0;
+}
+.check li:last-child{border-bottom:0;}
+.check input{
+  appearance:none; -webkit-appearance:none;
+  width:1.15rem; height:1.15rem; flex:none; margin-top:.22rem;
+  border:1.5px solid var(--ink-3); border-radius:4px; background:transparent;
+  cursor:pointer; transition:background .12s ease, border-color .12s ease;
+}
+.check input:checked{background:var(--accent); border-color:var(--accent);}
+.check input:checked + span{color:var(--ink-3); text-decoration:line-through;}
+.check label{display:flex; gap:.75rem; align-items:flex-start; cursor:pointer;}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:3px;}
+
+.foot{
+  margin-top:3.5rem; padding-top:1.5rem; border-top:1px solid var(--rule);
+  font-size:.85rem; color:var(--ink-3);
+}
+.foot a{color:var(--accent);}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms !important;}}
+</style>
+<style>
+:root{
+  --serif: Mshtakan, "Noto Serif Armenian", Sylfaen, ui-serif, Georgia, serif;
+  --sans: -apple-system, "SF Armenian", "Noto Sans Armenian", Sylfaen,
+    BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+h1,h2,h3{ letter-spacing:0; }
+.eyebrow{ letter-spacing:.08em; }
+
+@page { size: A4; margin: 18mm 15mm 16mm; }
+
+@media print {
+  :root{
+    --paper:#fff; --card:#fff; --ink:#111; --ink-2:#333; --ink-3:#666;
+    --rule:#c9c4cd; --accent:#a3134c; --accent-soft:#fbeef3;
+    --flag:#7a4e00; --flag-soft:#fdf3e0; --shadow:none;
+  }
+  html,body{ background:#fff !important; color:#111 !important;
+    font-size:10.5pt; line-height:1.5;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .wrap{ max-width:none; margin:0; padding:0; }
+
+  h1{ font-size:24pt; }
+  .standfirst{ font-size:11.5pt; margin-bottom:14pt; max-width:none; }
+  h2{ font-size:14pt; }
+  h3{ font-size:10.5pt; }
+  .pull{ font-size:11.5pt; }
+
+  /* the section number sits inline when there is no margin to hang it in */
+  h2 .n{ position:static !important; }
+
+  section{ margin-top:14pt; padding-top:11pt; break-before:auto; }
+  h1,h2,h3{ break-after:avoid; page-break-after:avoid; }
+  .card,.no,.pull,.qs li,.check li,figure{ break-inside:avoid; page-break-inside:avoid; }
+  .card{ box-shadow:none; border:1px solid var(--rule); }
+
+  /* empty boxes to tick with a pen */
+  .check input{ border:1.2px solid #555 !important; background:#fff !important; }
+
+  a{ color:#111; text-decoration:underline; }
+  .foot{ font-size:8.5pt; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="eyebrow">Նախապատրաստական նշումներ</p>
+<h1>Հանդիպում Տիգրան Ցիտողձյանի հետ</h1>
+<p class="standfirst">Միքայել Գրիգորյանի համար՝ 24 տարեկան, նկարիչ։ Ի՞նչ է հարցնելու, ինչո՞վ կարող է օգնել և ի՞նչ պետք է պատրաստ լինի։</p>
+
+<section>
+<h2><span class="n">01</span> Ո՞վ է նա՝ այն մասով, որ քեզ է վերաբերում</h2>
+<p>Տիգրան Ցիտողձյանը (ծն. 1976, Երևան) այսօր ապրող ամենահայտնի հայ նկարիչներից է։ Ապրում է Նյու Յորքում, ցուցադրվում է Opera Gallery-ում և այլ պատկերասրահներում, և առավել հայտնի է <em>Mirrors</em> շարքով՝ շատ մեծ, սև-սպիտակ գերիրապաշտ դիմանկարներ՝ դեմքերին դրված ձեռքերով։</p>
+<p>Նրա մասին երեք փաստ քեզ համար ավելի արժեքավոր են, քան ամբողջ ինքնակենսագրականը։</p>
+
+<h3>Նա քո տեղում է եղել</h3>
+<p>Մանկուց ճանաչվել է որպես հրաշամանուկ, առաջին անհատական ցուցահանդեսները՝ և՛ տեղական, և՛ միջազգային՝ ունեցել է <strong>տասը տարեկանում</strong>, իսկ նրա մանկության մի քանի աշխատանք պահվում է Երևանի Մանկական արվեստի թանգարանում։ Երբ նա նայում է 24-ամյա մեկին, ում ձեռքն այդքան համառ է, դա բարեգործություն չէ։ Դա ճանաչում է։</p>
+
+<h3>Նա գիտակցաբար ճանապարհ է կառուցում երիտասարդ հայ նկարիչների համար</h3>
+<p>Նյու Յորքին զուգահեռ Հայաստանում ունի արվեստանոց և արվեստանոց-պատկերասրահ, Երևանում միջոցառումներ է անում երիտասարդ նկարիչների համար, մենթոր է եղել Creative Armenia–AGBU կրթաթոշակի ծրագրում, և հայտարարել է Երևանում արվեստի ռեզիդենցիա, սկսնակ նկարիչների պատկերասրահ և միջազգային ստեղծագործական կենտրոն ստեղծելու մասին։ Երիտասարդ նկարիչների հետ հանդիպելը նրա համար պատահական լավություն չէ։ Դա այն է, ինչով նա հենց հիմա զբաղվում է։</p>
+
+<h3>Դու սովորել ես նրա ակադեմիայում</h3>
+<p>Նա ավարտել է <strong>Հայաստանի գեղարվեստի պետական ակադեմիան</strong> 1999-ին։ Դու ավարտել ես նույն ակադեմիան 2024-ին։ Սա իրական, կոնկրետ ընդհանրություն է և ամենահեշտ բանը, որով կարելի է սկսել՝ հարցրու, թե ով է իրեն դասավանդել այնտեղ և արդյոք նրանցից որևէ մեկը դեռ դասավանդում էր քսանհինգ տարի անց։ Դա քննությունը վերածում է նույն տեղից եկած երկու մարդու զրույցի։</p>
+
+<h3>Ինքն էլ հեռանում է ռեալիզմից</h3>
+<p>Նա ասել է, որ ուզում է ավելի ազատ աշխատել՝ առանց մոդելների ու հենքային նկարների, և փորձարկում է նոր, գունային շարք։ Քո աշխատանքը բոլորովին նման չէ իրենին, բայց ամբողջովին գույնի ու հորինվածքի մասին է՝ հենց այնտեղ, ուր հիմա ուղղված է իր ուշադրությունը։ Մի՛ վախեցիր գերիրապաշտության և քո արածի միջև եղած հեռավորությունից։ Հենց այդ հեռավորությունն է, որ խոսակցությունը հետաքրքիր է դարձնում իր համար։</p>
+</section>
+
+<section>
+<h2><span class="n">02</span> Ինչո՞ւ հենց քո աշխատանքը</h2>
+<p>Այս հարցում սթափ եղիր, որովհետև հենց դա է ցույց տալիս, թե ինչի վրա հենվել։</p>
+<ul>
+<li><strong>Ակնհայտ է, որ ձեռքով է արված, դանդաղ։</strong> Ամեն տանիք հաշված է կղմինդր առ կղմինդր։ 2026-ին դա հազվադեպ է, և մեկ այլ նկարիչ դա իսկույն է տեսնում։ Դա չես կարող կեղծել, և դա չի կարող գեներացվել — և դու ունես տեսանյութը, որ ապացուցում է։</li>
+<li><strong>Այստեղ իրական ձևական գաղափար կա</strong> — բազմակի տեսակետերի փլուզված հեռանկարը և երկինքը, որ նկարված է ոչ թե որպես օդ, այլ որպես հարթ ժապավեններ։ Սա զարդարանք չէ, սա տեսնելու հետևողական ձև է։</li>
+<li><strong>Դու արդեն հայերեն ես վերնագրում</strong> — «Հանգիստ», «Կիրակի», «Սուրբ Աննա», «Երևան»։ Սա աշխատանքը կոնկրետ տեղում է դնում։ Հաշվի առնելով, թե ինչ է նա կառուցում Երևանում, ասա՛ վերնագրերը հայերեն և թող դրանք իրենց գործն անեն։</li>
+<li><strong>Դու մասնագիտական կրթություն ունես՝ հենց իր ակադեմիայից։</strong> Սա անվարժ ձեռքի նաիվ արվեստ չէ։ Այդ տարբերությունը կարևոր է նրա համար, թե ինչպես է աշխատանքը տեղակայվում ու գնահատվում։</li>
+<li><strong>Դու 24 տարեկան ես։</strong> Մենթորները ներդրում են անում հետագծի, ոչ թե ավարտված արդյունքի մեջ։</li>
+</ul>
+</section>
+
+<section>
+<h2><span class="n">03</span> Ի՞նչ է նա հավանաբար հարցնելու</h2>
+<p>Ամեն մեկի համար պատրաստ պատասխան ունեցիր։ Նշվածները նրանք են, որտեղ մարդիկ սովորաբար կորչում են։</p>
+<ol class="qs">
+<li>«Քանի՞ ավարտված աշխատանք ունես»։<span class="say">Նա ուզում է ամբողջը տեսնել, ոչ թե լավագույն հինգը։ Վեցը հրապարակային են՝ 2023-ից 2026 թթ.։ Եթե դարակում ուրիշներ էլ կան, դրանք էլ են հաշվում։ Հինգը՝ համտես է, երեսունը՝ պրակտիկա։</span></li>
+<li><span class="flag">Կարևոր</span>«Լուսանկարի՞ց ես աշխատում, բնությունի՞ց, թե՞ գլխից»։<span class="say">Ամենակարևոր հարցը, և միակը, որին այժմ կարող ես պատասխանել ապացույցով, ոչ թե բառերով։ Ցույց տուր «Մայիս»-ի ժամանակի արագացումը՝ ամբողջ պատկերը նախ մատիտով դրված՝ հեռանկարն ու տանիքների գծերը, հետո լցված՝ հատված առ հատված։ Հեռախոսումդ պատրաստ ունեցիր, նախքան կհարցնի։ Ոչ մի ասված բան այնքան ուժեղ չի հնչի, որքան այդ տասնհինգ վայրկյանը։</span></li>
+<li><span class="flag">Կարևոր</span>«Ինչո՞ւ քաղաքներ։ Ինչո՞ւ երբեք մոտիկից մարդ չկա»։<span class="say">Նա ուզում է պատճառ, որ «սիրում եմ տներ նկարել»-ից խորն է։ Մանիֆեստ պետք չէ, մեկ ճշմարիտ նախադասություն բավական է։</span></li>
+<li>«Որքա՞ն ժամանակ է տևում մեկը»։</li>
+<li>«Որտե՞ղ ես սովորել»։<span class="say"><strong>Հայաստանի գեղարվեստի պետական ակադեմիա, բակալավր՝ համակարգչային գրաֆիկա, 2020–2024։</strong> Նախ ասա ակադեմիան — դա իր ակադեմիան է։ Թույլ մի՛ տուր, որ «համակարգչային գրաֆիկան» հնչի որպես արդարացում այն բանի, որ նկարչություն չես սովորել․ հենց դա է պատճառը, որ քո գույնը հարթ է ու կանխամտածված, իսկ կոմպոզիցիաները՝ կառուցված։</span></li>
+<li><span class="flag">Կարևոր</span>«Ավելի մեծ չափսո՞վ փորձել ես։ Կտավի՞ վրա։ Յուղաներկո՞վ կամ ակրիլո՞վ»։<span class="say">Սպասիր, որ սա կդառնա իր հիմնական խորհուրդը։ Տե՛ս 05 բաժինը։</span></li>
+<li>«Տարվա մեջ քանի՞սը կարող ես անել»։<span class="say">Հարցնում է՝ կարո՞ղ ես ցուցահանդես ապահովել։</span></li>
+<li><span class="flag">Կարևոր</span>«Սա՞ է քո գործը, թե՞ այն, ինչ անում ես աշխատանքից հետո»։<span class="say">Դու ֆրիլանս գրաֆիկ և վեբ դիզայներ ես, և նկարում ես։ Նկարչությունը մի՛ ներկայացրու որպես հոբբի, որ տեղավորվում է վճարովի աշխատանքի արանքում․ ներկայացրու դիզայնը որպես այն, ինչ ֆինանսավորում է անկախ պրակտիկան։ Նույն փաստերը, բոլորովին այլ իմաստ։ Սա նաև պատասխանում է «ինչպե՞ս կապրես մեկ տարի՝ միայն աշխատանք ստեղծելով» թաքնված հարցին։</span></li>
+<li>«Որևէ բան վաճառե՞լ ես։ Ի՞նչ գնով»։</li>
+<li>«Որտե՞ղ կարող եմ սա տեսնել առցանց»։<span class="say">Պատասխանված է՝ կայքը, գումարած Instagram-ը, որն այժմ հրապարակային է։ Ուղարկիր կայքի հղումը — դա միակ տեղն է, որտեղ նկարները հավաքված են վերնագրերով, տարեթվերով և կենսագրությամբ։ Behance-ը քո դիզայներական պորտֆոլիոն է․ հիշատակիր միայն, եթե հարցնի, թե ինչով ես ապրում։</span></li>
+<li><span class="flag">Կարևոր</span>«Ի՞նչ ես ուզում ինձնից»։<span class="say">Այս կամ այն ձևով կհարցնի։ Անորոշ պատասխանը վատնում է հանդիպումը։ Տե՛ս 06 բաժինը։</span></li>
+</ol>
+</section>
+
+<section>
+<h2><span class="n">04</span> Ինչո՞վ կարող է իրապես օգնել</h2>
+<p>Դասավորված ըստ իրական արժեքի՝</p>
+<ol>
+<li><strong>Ծանոթացումներ։</strong> Երևանյան պատկերասրահների, կուրատորների, իր սեփական շրջանակի հետ։ Ամենաարժեքավորն է և ամբողջովին իր ձեռքում։</li>
+<li><strong>Տեղ այն ամենի մեջ, ինչ նա կառուցում է</strong> — ռեզիդենցիան, սկսնակների պատկերասրահը, Երևանի կենտրոնը։ Սկզբից այնտեղ լինելը հսկայական բան է։</li>
+<li><strong>Անկեղծ քննադատություն մեկից, ով քեզ ոչինչ չի վաճառում։</strong> Սա խնդրիր առաջինը։ Հենց սա է այն, ինչ միայն նա կարող է տալ, և հենց սա է այն, ինչ գրեթե ոչ ոք չի խնդրում։</li>
+<li><strong>Ճանապարհ դեպի Creative Armenia–AGBU կրթաթոշակ</strong>, որտեղ ինքը մենթոր է եղել։</li>
+<li><strong>Նյութական և տեխնիկական խորհուրդ</strong> — արխիվային թուղթ, լուսակայուն ներկեր, մեծ չափսերով աշխատելը, շրջանակելը, աշխատանքը ճիշտ լուսանկարելը։ Ոչ շքեղ, բայց տարիներ կխնայի։</li>
+<li><strong>Գնագոյացում։</strong> Երիտասարդ նկարիչները գրեթե միշտ սխալ են գնահատում՝ մեկ ուղղությամբ կամ մյուսով։ Նա գիտի, թե շուկան ինչ է վճարում։</li>
+<li><strong>Տեսնել, թե ինչպես է աշխատում պրոֆեսիոնալ արվեստանոցը։</strong> Ինչպես է գործող նկարիչը կազմակերպում օրը, աշխատանքների շարքը, ցուցահանդեսը։</li>
+</ol>
+<div class="no">
+<p><strong>Ինչ նա չի անելու և ինչ չպետք է խնդրել․</strong> գնել քո աշխատանքը, փող տալ, դառնալ քո գործակալը կամ տեղում ցուցահանդես խոստանալ։</p>
+</div>
+</section>
+
+<section>
+<h2><span class="n">05</span> Այն մեկ քննադատությունը, որին պետք է պատրաստ լինել</h2>
+<p>Գրեթե անկասկած նա կբարձրացնի <strong>չափսի և նյութերի</strong> հարցը։ Աշխատանքը փոքր է, թղթի վրա, հիմնականում մարկերով։ Երկու հետևանք․</p>
+<div class="card">
+<h3>Մարկերների մեծ մասը լուսակայուն չէ</h3>
+<p>Ֆետրե և սպիրտային գույները լույսի տակ մի քանի տարում փոխվում և խամրում են։ Պատկերասրահը չի կարող պատասխանատվությամբ վաճառել բնօրինակ, որը չի դիմանա, և լուրջ հավաքորդը կհարցնի։ Եթե արդեն օգտագործում ես պիգմենտային կամ արխիվային գրիչներ, ասա ապրանքանիշը։ Եթե ոչ՝ ազնիվ պատասխանն է․ «Գիտեմ, և ուզում եմ լուծել»։ Այդ պատասխանը հարգանք է առաջացնում։ Ձևացնելը, թե խնդիր չկա՝ ոչ։</p>
+</div>
+<div class="card">
+<h3>Փոքր աշխատանքն ունի ցածր առաստաղ</h3>
+<p>Քո պատկերները բավական խիտ են, որ դիմանան երեք անգամ ավելի մեծ չափսի, և այդ չափսում դրանք դադարում են գծանկար լինելուց ու դառնում են գեղանկար։ Սպասիր «մեկ մետր լայնությամբ փորձե՞լ ես» հարցին և ունեցիր կարծիք։</p>
+</div>
+<p>Այս երկուսից ոչ մեկի դեմ մի՛ պաշտպանվիր։ Երկուսն էլ ընդունիր որպես հետաքրքիր խնդիր, ոչ թե հարձակում։ Քննադատությանը քո արձագանքն է այն, ինչ նա իրականում չափում է։</p>
+</section>
+
+<section>
+<h2><span class="n">06</span> Ի՞նչ վերցնել հետդ և ի՞նչ ասել</h2>
+<p><strong>Վերցրու բնօրինակները։</strong> Իրական թերթերը, թղթապանակի մեջ — ոչ միայն հեռախոսը։ Քո աշխատանքը խտության մասին է և ամբողջությամբ բացվում է միայն կենդանի, ընթերցելու հեռավորությունից։ Սա այս նշումների ամենակարևոր տողն է։</p>
+<p><strong>Վերցրու ամեն ինչ</strong>, ներառյալ ավելի վաղ և անավարտ գործերը։ 24-ամյա նկարչի մոտ մարդիկ հենց զարգացումն են փնտրում։ Լավագույն հինգով սահմանափակվելը թաքցնում է հենց այն, ինչ նա ուզում է տեսնել։</p>
+<p><strong>Կայքը հեռախոսումդ ունեցիր</strong> — որպես պահեստային տարբերակ և որպես այն, ինչ հետո կուղարկես։</p>
+<p><strong>«Մայիս»-ի տեսանյութը պատրաստ պահիր։</strong> Այն կայքում է՝ Process բաժնում, այնպես որ միայն կայքը բավական է։ Սա քո ամենաուժեղ միակ բանն է․ ապացուցում է, որ աշխատանքը ձեռքով է կառուցվում՝ ոչնչից, և պատասխանում է ամենադժվար հարցին՝ նախքան այն տրվելը։</p>
+<p><strong>Վերցրու գրելու բան։</strong> Գրի՛ր, երբ նա խոսում է։ Դա լրջության նշան է, և այլապես չես հիշի։</p>
+<p><strong>Գնացուցակ մի՛ վերցրու</strong>, եթե ինքը չխնդրի։</p>
+<p>Ունեցիր երկու պատրաստի նախադասություն՝ մեկը «ի՞նչ ես անում», մյուսը՝ «ի՞նչ ես ուզում» հարցի համար։</p>
+<p class="pull">«Ես հորինված քաղաքներ եմ նկարում՝ հիշողությունից, միանգամից մի քանի տեսանկյունից, թանաքով և մարկերով՝ թղթի վրա»։</p>
+<p class="pull">«Կուզենայի քո անկեղծ կարծիքը աշխատանքի մասին և խորհուրդ, թե ինչ պետք է անեմ հետո՝ ավելի մեծ, այլ նյութերով, թե՞ ուղղակի ավելի շատ սրանցից»։</p>
+<p>Երկրորդ նախադասությունը միտումնավոր լավություն չի խնդրում։ <strong>Խնդրիր դատողություն, ոչ թե մուտք։</strong> Եթե նա աշխատանքը լավ համարի, մուտքն ինքն իրեն կգա — իսկ եթե առաջինը մուտք խնդրես, հանդիպումը սահմանափակել ես այնքանով, որքան համարձակվել ես անվանել։</p>
+</section>
+
+<section>
+<h2><span class="n">07</span> Փոքր բաներ, որ կարևոր են</h2>
+<ul>
+<li><strong>Մի՛ ներողություն խնդրիր աշխատանքի համար։</strong> Երբեք մի՛ անվանիր հոբբի, երբեք մի՛ սկսիր նրանից, թե ինչն է սխալ մի գործում։ Թող ինքը գտնի թերությունները — կգտնի։</li>
+<li><strong>Առաջին տասը րոպեում ծանոթացում մի՛ խնդրիր։</strong></li>
+<li><strong>Հարցրու իր աշխատանքի մասին։</strong> Նա հեռանում է ռեալիզմից դեպի գույն։ Հարցրու հենց դրա մասին — իսկապես հետաքրքիր հարց է և հենց դա է, ինչի մասին հիմա մտածում է։</li>
+<li><strong>Խոսիր հայերեն, եթե երկուսիդ համար էլ ավելի հեշտ է։</strong> Մի՛ խաղա դեր։</li>
+<li><strong>Կապ պահիր 24 ժամվա ընթացքում։</strong> Կարճ հաղորդագրություն, շնորհակալություն, կայքի հղում, ոչ մի խնդրանք։ Հենց այստեղ է, որ երիտասարդ նկարիչների մեծ մասը կորցնում է թելը։</li>
+</ul>
+</section>
+
+<section>
+<h2><span class="n">08</span> Այսօր, դուրս գալուց առաջ</h2>
+<ul class="check">
+<li><label><input type="checkbox"><span>Ընտրիր, թե որ գործերն ես տանում — տար <strong>բոլորը</strong>, լավագույնն առջևում</span></label></li>
+<li><label><input type="checkbox"><span>Կայքը գործարկիր և հղումը դիր հեռախոսիդ մեջ</span></label></li>
+<li><label><input type="checkbox"><span>Որոշիր պատասխանը՝ «լուսանկարի՞ց ես աշխատում»</span></label></li>
+<li><label><input type="checkbox"><span>Որոշիր պատասխանը՝ «ինչո՞ւ քաղաքներ»</span></label></li>
+<li><label><input type="checkbox"><span>Որոշիր պատասխանը՝ «ի՞նչ ես ուզում ինձնից»</span></label></li>
+<li><label><input type="checkbox"><span>Պարզիր, թե իրականում ինչ մարկերներ ես օգտագործում — ապրանքանիշ, պիգմենտայի՞ն թե ներկանյութային</span></label></li>
+<li><label><input type="checkbox"><span>Տպիր ինքնակենսագրականի երկու օրինակ — մեկը՝ իրեն թողնելու</span></label></li>
+<li><label><input type="checkbox"><span>Հարցրու ԵՐԵՎԱՆ ամսագրին, արդյոք տպագրե՞լ են «Երևան»-ը — եթե այո, դա հրապարակման վաստակ է</span></label></li>
+<li><label><input type="checkbox"><span>Ուղարկիր Մարիին «Մայիս»-ի նորմալ լուսանկարը — կայքում հիմա տեսանյութի կադր է</span></label></li>
+<li><label><input type="checkbox"><span>Ստուգիր, որ տեսանյութը նվագարկվում է հեռախոսումդ՝ բջջային ինտերնետով</span></label></li>
+<li><label><input type="checkbox"><span>Հեռախոսը լիցքավորիր, նոթատետր վերցրու</span></label></li>
+</ul>
+</section>
+
+<p class="foot">Տիգրան Ցիտողձյանի մասին տեղեկությունների աղբյուրները՝ իր <a href="https://tigran.art/bio/">կենսագրության էջը</a>, <a href="https://en.wikipedia.org/wiki/Tigran_Tsitoghdzyan">Wikipedia</a>, <a href="https://agbu.org/success-without-borders/portrait-prodigy">AGBU</a> և <a href="https://armenianweekly.com/2021/08/25/calling-all-cutting-edge-creators-across-all-art-fields-for-the-2022-creative-armenia-agbu-fellowship/">Armenian Weekly</a>-ն՝ Creative Armenia–AGBU կրթաթոշակի մասին։ 03–07 բաժինները եզրակացություններ են դրանից, ոչ թե նրա ասածը։ Միքայելի կրթությունը, բնակավայրը և մասնագիտությունը՝ իր ինքնակենսագրականից։</p>
+
+</div>
+</body>
+</html>

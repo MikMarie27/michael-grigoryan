@@ -1,0 +1,9 @@
+{
+  "name": "Michael Grigoryan",
+  "short_name": "M. Grigoryan",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf8f5",
+  "theme_color": "#0e0d0f",
+  "icons": [{ "src": "/assets/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

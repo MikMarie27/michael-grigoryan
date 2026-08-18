@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Michael Grigoryan — Painter</title>
+<meta name="description" content="Michael Grigoryan is an artist in Yerevan who draws invented cities in ink, marker and gouache on paper — seen from everywhere at once, with the sky laid down in flat ribbons of colour.">
+<link rel="canonical" href="https://michael-grigoryan.com/">
+<meta name="theme-color" content="#0e0d0f" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#faf8f5" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Michael Grigoryan — Painter">
+<meta property="og:description" content="Cities that were never built, drawn as if seen from everywhere at once.">
+<meta property="og:url" content="https://michael-grigoryan.com/">
+<meta property="og:image" content="https://michael-grigoryan.com/images/full/mayis.jpg">
+<meta property="og:image:alt" content="A painted town of stacked coloured houses and a smoking chimney, set between snow-capped mountains.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preload" as="image" href="media/mayis-poster.jpg" fetchpriority="high">
+<link rel="stylesheet" href="assets/styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Michael Grigoryan",
+  "jobTitle": "Painter",
+  "nationality": "Armenian",
+  "email": "Michael.Grigoryan.02@gmail.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Yerevan", "addressCountry": "AM" },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "State Academy of Fine Arts of Armenia"
+  },
+  "url": "https://michael-grigoryan.com/",
+  "sameAs": [
+    "https://www.saatchiart.com/account/profile/3008191",
+    "https://www.instagram.com/mish__333",
+    "https://www.behance.net/Michael_Grigoryan"
+  ],
+  "knowsAbout": ["Painting", "Drawing", "Cityscape", "Works on paper"]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <a class="wordmark" href="#top">Michael&nbsp;Grigoryan</a>
+  <nav aria-label="Primary">
+    <ul>
+      <li><a href="#works">Works</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <div class="hero-copy">
+      <h1 id="name">Michael Grigoryan</h1>
+      <p class="lede" id="lede"></p>
+      <p class="hero-meta" id="hero-meta"></p>
+      <a class="btn" id="cta" href="#works">See the work</a>
+    </div>
+    <figure class="hero-figure"></figure>
+  </section>
+
+  <section id="works" class="section" aria-labelledby="works-h">
+    <div class="section-head">
+      <h2 id="works-h">Works</h2>
+      <p class="section-note">Click any work to view it large.</p>
+    </div>
+    <ul class="grid" id="grid"></ul>
+    <noscript>
+      <p class="section-note">This gallery needs JavaScript. The images are all in <code>images/full/</code>.</p>
+    </noscript>
+  </section>
+
+  <section id="about" class="section about" aria-labelledby="about-h">
+    <div class="section-head"><h2 id="about-h">About</h2></div>
+    <div class="prose" id="about-prose"></div>
+    <dl class="facts" id="facts"></dl>
+  </section>
+
+  <section id="contact" class="section contact" aria-labelledby="contact-h">
+    <div class="section-head"><h2 id="contact-h">Contact</h2></div>
+    <div class="prose">
+      <p class="big" id="contact-line"></p>
+      <p class="contact-links" id="contact-email"></p>
+      <ul class="elsewhere" id="elsewhere"></ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <p>&copy; <span id="year">2026</span> Michael Grigoryan. All works reproduced by permission of the artist.</p>
+</footer>
+
+<dialog id="lightbox" aria-label="Artwork viewer">
+  <button class="lb-close" type="button" data-lb="close" aria-label="Close viewer">&times;</button>
+  <button class="lb-nav lb-prev" type="button" data-lb="prev" aria-label="Previous work">&#8249;</button>
+  <button class="lb-nav lb-next" type="button" data-lb="next" aria-label="Next work">&#8250;</button>
+  <figure class="lb-figure">
+    <img id="lb-img" alt="">
+    <figcaption id="lb-cap"></figcaption>
+  </figure>
+</dialog>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

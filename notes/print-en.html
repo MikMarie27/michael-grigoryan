@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meeting Tigran Tsitoghdzyan</title>
+<style>
+:root{
+  --paper:#fbfaf8;
+  --card:#ffffff;
+  --ink:#171419;
+  --ink-2:#4d4752;
+  --ink-3:#867e8d;
+  --rule:#e4dfda;
+  --accent:#b31752;
+  --accent-soft:#fdeef4;
+  --flag:#8a5a00;
+  --flag-soft:#fdf3e0;
+  --shadow:0 1px 2px rgb(23 20 25/.04), 0 10px 28px -14px rgb(23 20 25/.22);
+  --serif: ui-serif, "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#131116; --card:#1b181f; --ink:#f2eff3; --ink-2:#b0a9b6; --ink-3:#7f7887;
+    --rule:#2e2933; --accent:#ff5e97; --accent-soft:#2c1220;
+    --flag:#e2a844; --flag-soft:#2a2113;
+    --shadow:0 1px 2px rgb(0 0 0/.5), 0 14px 34px -16px rgb(0 0 0/.75);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#131116; --card:#1b181f; --ink:#f2eff3; --ink-2:#b0a9b6; --ink-3:#7f7887;
+  --rule:#2e2933; --accent:#ff5e97; --accent-soft:#2c1220;
+  --flag:#e2a844; --flag-soft:#2a2113;
+  --shadow:0 1px 2px rgb(0 0 0/.5), 0 14px 34px -16px rgb(0 0 0/.75);
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:1.0625rem; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:44rem; margin:0 auto; padding:clamp(2rem,6vw,4.5rem) clamp(1.1rem,5vw,2rem) 5rem;}
+
+.eyebrow{
+  font-size:.75rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--accent); margin:0 0 .9rem; font-weight:600;
+}
+h1{
+  font-family:var(--serif); font-weight:400;
+  font-size:clamp(2.1rem,1.5rem+2.6vw,3.25rem); line-height:1.05;
+  letter-spacing:-.02em; margin:0 0 .7rem; text-wrap:balance;
+}
+.standfirst{
+  font-family:var(--serif); font-size:clamp(1.05rem,1rem+.4vw,1.25rem);
+  color:var(--ink-2); margin:0 0 2.5rem; max-width:34ch; line-height:1.45;
+}
+
+section{border-top:1px solid var(--rule); padding-top:2rem; margin-top:2.5rem;}
+h2{
+  font-family:var(--serif); font-weight:400; font-size:1.6rem; line-height:1.2;
+  letter-spacing:-.01em; margin:0 0 1.1rem; text-wrap:balance;
+  display:flex; gap:.7rem; align-items:baseline;
+}
+h2 .n{
+  font-family:var(--sans); font-size:.75rem; font-weight:600;
+  letter-spacing:.08em; color:var(--ink-3);
+  font-variant-numeric:tabular-nums; flex:none;
+}
+@media (min-width:56rem){
+  h2{position:relative;}
+  h2 .n{position:absolute; left:-3.5rem; top:.55rem;}
+}
+h3{font-size:.98rem; font-weight:650; margin:1.6rem 0 .4rem; letter-spacing:-.005em;}
+p{margin:0 0 1rem; text-wrap:pretty;}
+strong{font-weight:650;}
+em{font-style:italic;}
+ul,ol{margin:0 0 1rem; padding-left:1.35rem;}
+li{margin-bottom:.55rem;}
+ol{counter-reset:none;}
+
+.pull{
+  font-family:var(--serif); font-size:1.2rem; line-height:1.4;
+  color:var(--ink); border-left:2px solid var(--accent);
+  padding:.15rem 0 .15rem 1.1rem; margin:1.4rem 0;
+}
+
+.card{
+  background:var(--card); border:1px solid var(--rule); border-radius:6px;
+  padding:1.2rem 1.3rem; margin:1.4rem 0; box-shadow:var(--shadow);
+}
+.card p:last-child,.card ul:last-child,.card ol:last-child{margin-bottom:0;}
+
+.flag{
+  display:inline-block; font-size:.68rem; font-weight:700; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--flag); background:var(--flag-soft);
+  border-radius:3px; padding:.12rem .42rem; margin-right:.45rem;
+  vertical-align:.09em; white-space:nowrap;
+}
+.qs{list-style:none; padding:0; margin:0; counter-reset:q;}
+.qs li{
+  counter-increment:q; position:relative;
+  padding:.75rem 0 .75rem 2.3rem; margin:0;
+  border-bottom:1px solid var(--rule);
+}
+.qs li:last-child{border-bottom:0;}
+.qs li::before{
+  content:counter(q); position:absolute; left:0; top:.85rem;
+  font-size:.78rem; font-weight:600; color:var(--ink-3);
+  font-variant-numeric:tabular-nums;
+}
+.qs .say{display:block; color:var(--ink-2); font-size:.95rem; margin-top:.2rem;}
+
+.no{ background:var(--accent-soft); border:1px solid var(--rule);
+  border-radius:6px; padding:1rem 1.2rem; margin:1.4rem 0;}
+.no p{margin:0;}
+
+.check{list-style:none; padding:0; margin:0;}
+.check li{
+  display:flex; gap:.75rem; align-items:flex-start;
+  padding:.6rem 0; border-bottom:1px solid var(--rule); margin:0;
+}
+.check li:last-child{border-bottom:0;}
+.check input{
+  appearance:none; -webkit-appearance:none;
+  width:1.15rem; height:1.15rem; flex:none; margin-top:.22rem;
+  border:1.5px solid var(--ink-3); border-radius:4px; background:transparent;
+  cursor:pointer; transition:background .12s ease, border-color .12s ease;
+}
+.check input:checked{background:var(--accent); border-color:var(--accent);}
+.check input:checked + span{color:var(--ink-3); text-decoration:line-through;}
+.check label{display:flex; gap:.75rem; align-items:flex-start; cursor:pointer;}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:3px;}
+
+.foot{
+  margin-top:3.5rem; padding-top:1.5rem; border-top:1px solid var(--rule);
+  font-size:.85rem; color:var(--ink-3);
+}
+.foot a{color:var(--accent);}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms !important;}}
+</style>
+<style>
+@page { size: A4; margin: 18mm 15mm 16mm; }
+
+@media print {
+  :root{
+    --paper:#fff; --card:#fff; --ink:#111; --ink-2:#333; --ink-3:#666;
+    --rule:#c9c4cd; --accent:#a3134c; --accent-soft:#fbeef3;
+    --flag:#7a4e00; --flag-soft:#fdf3e0; --shadow:none;
+  }
+  html,body{ background:#fff !important; color:#111 !important;
+    font-size:10.5pt; line-height:1.5;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .wrap{ max-width:none; margin:0; padding:0; }
+
+  h1{ font-size:24pt; }
+  .standfirst{ font-size:11.5pt; margin-bottom:14pt; max-width:none; }
+  h2{ font-size:14pt; }
+  h3{ font-size:10.5pt; }
+  .pull{ font-size:11.5pt; }
+
+  /* the section number sits inline when there is no margin to hang it in */
+  h2 .n{ position:static !important; }
+
+  section{ margin-top:14pt; padding-top:11pt; break-before:auto; }
+  h1,h2,h3{ break-after:avoid; page-break-after:avoid; }
+  .card,.no,.pull,.qs li,.check li,figure{ break-inside:avoid; page-break-inside:avoid; }
+  .card{ box-shadow:none; border:1px solid var(--rule); }
+
+  /* empty boxes to tick with a pen */
+  .check input{ border:1.2px solid #555 !important; background:#fff !important; }
+
+  a{ color:#111; text-decoration:underline; }
+  .foot{ font-size:8.5pt; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="eyebrow">Preparation brief</p>
+<h1>Meeting Tigran Tsitoghdzyan</h1>
+<p class="standfirst">For Michael Grigoryan, 24, painter. What he will ask, what he can do for you, and what to have ready.</p>
+
+<section>
+<h2><span class="n">01</span> Who he is, in the part that matters to you</h2>
+<p>Tigran Tsitoghdzyan (b. 1976, Yerevan) is one of the most internationally visible Armenian artists alive. He lives in New York, shows with Opera Gallery and others, and is best known for <em>Mirrors</em> — very large black-and-white hyperreal portraits with hands across the faces.</p>
+<p>Three facts about him are worth more to you than his CV.</p>
+
+<h3>He was you</h3>
+<p>He was identified as a prodigy as a child, had his first solo shows — local and international — at <strong>ten years old</strong>, and some of his childhood paintings are in the Children's Art Museum in Yerevan. When he looks at a 24-year-old with an obsessive hand, he is not being charitable. He is recognising something.</p>
+
+<h3>He is deliberately building a pipeline for young Armenian artists</h3>
+<p>He keeps a studio and studio-gallery in Armenia alongside New York, hosts events in Yerevan for young artists, has mentored for the Creative Armenia–AGBU Fellowship, and has described plans for an artist residency, a gallery for emerging artists, and an international creative hub in Yerevan. Meeting young artists is not a favour he is squeezing in. It is a thing he is actively doing.</p>
+
+<h3>You went to his school</h3>
+<p>He graduated from the <strong>State Academy of Fine Arts of Armenia</strong> in 1999. You graduated from the same Academy in 2024. That is a real, specific thing in common, and it is the easiest thing in the world to open with — ask him who taught him there, and whether any of them were still teaching twenty-five years later. It turns an audition into a conversation between two people from the same place.</p>
+
+<h3>He is himself moving away from realism</h3>
+<p>He has said he wants to work more freely, without models or references, and has been experimenting with a new colour series. Your work is nothing like his — but it is entirely about colour and invention, which is where his own attention is currently pointed. Don't be intimidated by the distance between hyperrealism and what you do. That distance is the reason the conversation is interesting to him.</p>
+</section>
+
+<section>
+<h2><span class="n">02</span> Why your work, specifically</h2>
+<p>Be clear-eyed about this, because it tells you what to lean on.</p>
+<ul>
+<li><strong>It is unmistakably made by hand, slowly.</strong> Every roof is counted tile by tile. In 2026 that is scarce, and it is immediately legible to another artist. It cannot be faked and it cannot be generated — and you have the film to prove it.</li>
+<li><strong>It has a real formal idea</strong> — the collapsed multi-viewpoint perspective, and skies rendered as flat ribbons rather than atmosphere. It isn't decorative; it is a consistent way of seeing.</li>
+<li><strong>There is an Armenian thread</strong> — the street scene with Armenian lettering in the sky and blossom on the trees. Given what he is building in Yerevan, an Armenian artist making Armenian subjects in an original idiom is exactly the profile he is looking for.</li>
+<li><strong>You already title your work in Armenian</strong> — «Հանգիստ», «Կիրակի», «Սուրբ Աննա», «Երևան». That is not decoration; it places the work somewhere specific. Given what he is building in Yerevan, say the titles in Armenian and let them do their work.</li>
+<li><strong>You are formally trained, at his own Academy.</strong> This is not naïve art by an untrained hand. That distinction matters to how the work gets placed and priced.</li>
+<li><strong>You are 24.</strong> Mentors invest in trajectory, not in finished product.</li>
+</ul>
+</section>
+
+<section>
+<h2><span class="n">03</span> What he will probably ask</h2>
+<p>Have an answer ready for each. The flagged ones are where people fumble.</p>
+<ol class="qs">
+<li>“How many finished works do you have?”<span class="say">He wants the whole body, not the best five. Six are public, dated 2023 to 2026 — if there are more in a drawer, they count, and he will want to see them. Five is a taster; thirty is a practice.</span></li>
+<li><span class="flag">Key</span>“Do you work from photographs, from life, or from your head?”<span class="say">The most important question he will ask — and the one question you can now <em>answer with evidence rather than words</em>. Show him the time-lapse of «Մայիս»: the whole picture set out in pencil first, perspective and roof lines, then filled in block by block. Have it ready on your phone before he asks. Nothing you could say lands as hard as fifteen seconds of that.</span></li>
+<li><span class="flag">Key</span>“Why cities? Why never a person up close?”<span class="say">He wants a reason beyond “I like drawing buildings.” Not a manifesto — one true sentence.</span></li>
+<li>“How long does one take?”</li>
+<li>“Where did you study?”<span class="say"><strong>State Academy of Fine Arts of Armenia, BA in computer graphics, 2020–2024.</strong> Say the Academy first — it is his Academy. Do not let “computer graphics” sound like an apology for not having done painting; it is why your colour is flat and deliberate and your compositions are constructed.</span></li>
+<li><span class="flag">Key</span>“Have you ever worked bigger? On canvas? In oil or acrylic?”<span class="say">Expect this to become his main piece of advice. See section 05.</span></li>
+<li>“How many could you make in a year?”<span class="say">He is asking whether you could supply a show.</span></li>
+<li><span class="flag">Key</span>“Is this what you do, or what you do after work?”<span class="say">You freelance as a graphic and web designer, and you draw. Do not present the drawing as a hobby that fits around paid work — present the design work as what funds an independent practice. Same facts, completely different meaning. It also answers “how would you survive a year making work?”, which is the question underneath.</span></li>
+<li>“Have you sold anything? For how much?”</li>
+<li>“Where can I see this online?”<span class="say">Answered: the site, plus the Instagram, now public. Send the site link — it is the only place the paintings sit together with titles, years and a biography. Behance is your design portfolio; mention it only if he asks what pays the bills.</span></li>
+<li><span class="flag">Key</span>“What do you want from me?”<span class="say">He will ask in some form. A vague answer wastes the meeting. See section 06.</span></li>
+</ol>
+</section>
+
+<section>
+<h2><span class="n">04</span> What he can realistically do for you</h2>
+<p>Ranked by what it is actually worth:</p>
+<ol>
+<li><strong>Introductions.</strong> To Yerevan galleries, to curators, to his own network. Worth more than anything else, and entirely within his power.</li>
+<li><strong>A place in what he is building</strong> — the residency, the emerging-artist gallery, the Yerevan hub. Being in that from the start is enormous.</li>
+<li><strong>Honest critique from someone with nothing to sell you.</strong> Ask for this first. It is what he is uniquely qualified to give and what almost nobody asks for.</li>
+<li><strong>A route into the Creative Armenia–AGBU Fellowship</strong>, which he has mentored for.</li>
+<li><strong>Material and technical advice</strong> — archival paper, lightfast media, working at scale, framing, photographing work properly. Unglamorous, and it will save you years.</li>
+<li><strong>Pricing.</strong> Young artists price wrong in one direction or the other. He knows what the market pays.</li>
+<li><strong>Seeing a professional studio operate.</strong> How a working artist organises a day, a body of work, a show.</li>
+</ol>
+<div class="no">
+<p><strong>What he is not going to do, and must not be asked:</strong> buy your work, lend you money, become your agent, or promise you a show on the spot.</p>
+</div>
+</section>
+
+<section>
+<h2><span class="n">05</span> The one criticism to prepare for</h2>
+<p>Almost certainly he will raise <strong>scale and materials.</strong> The work is small, on paper, largely in marker. Two consequences:</p>
+<div class="card">
+<h3 style="margin-top:0">Most markers are not lightfast</h3>
+<p>Felt and alcohol-based colours shift and fade in daylight over a few years. A gallery cannot responsibly sell an original that won't survive, and a serious collector will ask. If you already use pigment-based or archival pens, name the brand. If you don't, the honest answer is “I know, and I want to solve it.” That answer is respected. Pretending it isn't a problem is not.</p>
+</div>
+<div class="card">
+<h3 style="margin-top:0">Small work has a low ceiling</h3>
+<p>Your pictures are dense enough to survive being three times bigger, and at that size they stop being drawings and start being paintings. Expect “have you tried this a metre wide?” and have a view on it.</p>
+</div>
+<p>Don't get defensive about either. Treat both as the interesting problem, not as an attack. Your reaction to criticism is the thing he is actually measuring.</p>
+</section>
+
+<section>
+<h2><span class="n">06</span> What to bring, and what to say</h2>
+<p><strong>Bring the originals.</strong> The physical sheets, in a folder — not just a phone. Your work is about density and it only fully lands in person, at reading distance. This is the most important line in this brief.</p>
+<p><strong>Bring everything</strong>, including earlier and unfinished pieces. Development is what people look for in a 24-year-old. Editing down to the best five hides exactly what he wants to see.</p>
+<p><strong>Bring the website on your phone</strong> — as backup, and as the thing to send afterwards.</p>
+<p><strong>Have the «Մայիս» time-lapse queued up.</strong> It is on the site under Process, so the site alone is enough. It is the strongest single thing you have: it proves the work is built, by hand, from nothing, and it answers the hardest question before it is asked.</p>
+<p><strong>Bring something to write with.</strong> Take notes while he talks. It reads as seriousness, and you will not remember it otherwise.</p>
+<p><strong>Don't bring a price list</strong> unless he asks.</p>
+<p>Have two sentences ready — one for “what are you doing?”, one for “what do you want?”</p>
+<p class="pull">“I draw invented cities from memory, from several viewpoints at once, in ink and marker on paper.”</p>
+<p class="pull">“I'd like your honest opinion on the work, and advice on what I should be doing next — bigger, different materials, or more of these.”</p>
+<p>That second sentence is deliberately not a request for a favour. <strong>Ask for judgement, not for access.</strong> If he thinks the work is good, the access follows on its own — and if you ask for access first, you have capped the meeting at whatever you were bold enough to name.</p>
+</section>
+
+<section>
+<h2><span class="n">07</span> Small things that matter</h2>
+<ul>
+<li><strong>Don't apologise for the work.</strong> Never call it a hobby, never open with what's wrong with a piece. Let him find the flaws — he will.</li>
+<li><strong>Don't ask for an introduction in the first ten minutes.</strong></li>
+<li><strong>Ask about his own work.</strong> He is moving away from realism into colour. Ask him about that — it's a genuinely interesting question and it's what he's thinking about right now.</li>
+<li><strong>Speak Armenian if that's easier for both of you.</strong> Don't perform.</li>
+<li><strong>Follow up within 24 hours.</strong> Short message, thank you, link to the site, nothing asked for. This is where most young artists lose the thread.</li>
+</ul>
+</section>
+
+<section>
+<h2><span class="n">08</span> Tonight</h2>
+<ul class="check">
+<li><label><input type="checkbox"><span>Choose which works to bring — bring <strong>all</strong> of them, sorted best-first</span></label></li>
+<li><label><input type="checkbox"><span>Get the site live and the link onto your phone</span></label></li>
+<li><label><input type="checkbox"><span>Put a real email address on the site</span></label></li>
+<li><label><input type="checkbox"><span>Decide the answer to “do you work from photographs?”</span></label></li>
+<li><label><input type="checkbox"><span>Decide the answer to “why cities?”</span></label></li>
+<li><label><input type="checkbox"><span>Decide the answer to “what do you want from me?”</span></label></li>
+<li><label><input type="checkbox"><span>Find out what your markers actually are — brand, pigment or dye</span></label></li>
+<li><label><input type="checkbox"><span>Print two copies of the CV — one for him to keep</span></label></li>
+<li><label><input type="checkbox"><span>Ask EVN Magazine whether they ran «Երևան» — if they did, that is a publication credit</span></label></li>
+<li><label><input type="checkbox"><span>Send Marie a proper photograph of «Մայիս» — the site currently uses a frame from the video</span></label></li>
+<li><label><input type="checkbox"><span>Check the time-lapse plays on your phone, on mobile data, before you leave</span></label></li>
+<li><label><input type="checkbox"><span>Charge your phone; pack a notebook</span></label></li>
+</ul>
+</section>
+
+<p class="foot">Sources for the background on Tigran Tsitoghdzyan: his own <a href="https://tigran.art/bio/">biography page</a>, <a href="https://en.wikipedia.org/wiki/Tigran_Tsitoghdzyan">Wikipedia</a>, <a href="https://agbu.org/success-without-borders/portrait-prodigy">AGBU</a> and <a href="https://armenianweekly.com/2021/08/25/calling-all-cutting-edge-creators-across-all-art-fields-for-the-2022-creative-armenia-agbu-fellowship/">the Armenian Weekly</a> on the Creative Armenia–AGBU Fellowship. Everything in sections 03 to 07 is inference from that, not something he has said. Michael's education, location and profession are from his own CV.</p>
+
+</div>
+</body>
+</html>
