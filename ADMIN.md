@@ -1,12 +1,12 @@
-# Editing michael-grigoryan.com without touching code
+# Editing the site without touching code
 
-There is an admin panel at **https://michael-grigoryan.com/admin/**. Michael can use it from
+There is an admin panel at **https://mikmarie27.github.io/michael-grigoryan/admin/**. Michael can use it from
 a laptop or a phone to add works, reorder them, replace photographs, rewrite the
 biography and change the contact details. It writes to `content.json`, which is
 what the site reads.
 
 It cannot work from the Claude artifact link — that link is a single frozen file
-with no network access. **The admin only works once the site is deployed.**
+with no network access. **The admin only works on the deployed site.**
 
 ---
 
@@ -14,7 +14,9 @@ with no network access. **The admin only works once the site is deployed.**
 
 - **Repository:** `MikMarie27/michael-grigoryan`
 - **Host:** GitHub Pages, serving the `main` branch
-- **Domain:** michael-grigoryan.com
+- **Live at:** https://mikmarie27.github.io/michael-grigoryan/
+- **Domain:** michael-grigoryan.com — bought (order 4165950630) but still being
+  provisioned by GoDaddy. Run `./go-live.sh` once it resolves.
 
 Every save from the admin panel commits to that repository, and GitHub Pages
 rebuilds the site within about a minute. Nothing else has to be run.
@@ -32,7 +34,7 @@ on his own GitHub account, so it belongs to him.
    Leave everything else on "No access".
 5. Generate, and copy it. GitHub shows it once.
 
-Then open https://michael-grigoryan.com/admin/ and enter:
+Then open https://mikmarie27.github.io/michael-grigoryan/admin/ and enter:
 
 - **Repository:** `MikMarie27/michael-grigoryan`
 - **Branch:** `main`
