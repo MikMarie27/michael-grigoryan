@@ -87,11 +87,39 @@ and cropped to the sheet.
 
 ## Deploy
 
-Already deployed. `MikMarie27/michael-grigoryan` on GitHub, served by GitHub
-Pages from `main`, at **michael-grigoryan.com**. Pushing to `main` republishes
-it; so does pressing Publish in the admin panel.
+Live at **https://mikmarie27.github.io/michael-grigoryan/** — GitHub Pages,
+repository `MikMarie27/michael-grigoryan`, branch `main`. Pushing to `main`
+republishes it, and so does pressing Publish in the admin panel.
 
-The `CNAME` file is what tells Pages the custom domain — leave it in place.
+### Moving it to michael-grigoryan.com
+
+The domain is **not registered yet** — the registry has no record of it
+(`whois michael-grigoryan.com` returns "No match"). The GoDaddy account holds a
+DNS Hosting zone for the name but no registration, so nothing resolves.
+
+Once it is actually registered:
+
+1. Put the file back:
+
+```bash
+echo michael-grigoryan.com > CNAME && git add CNAME && git commit -m "Point at the custom domain" && git push
+```
+
+2. In the domain's DNS, point the apex at GitHub Pages:
+
+   | Type | Name | Value |
+   |---|---|---|
+   | A | @ | 185.199.108.153 |
+   | A | @ | 185.199.109.153 |
+   | A | @ | 185.199.110.153 |
+   | A | @ | 185.199.111.153 |
+   | CNAME | www | mikmarie27.github.io |
+
+   Delete GoDaddy's parked `A @ → WebsiteBuilder Site` record first.
+
+3. Swap the absolute URLs in `index.html`, `sitemap.xml` and `robots.txt` back to
+   `https://michael-grigoryan.com/`, then turn on **Enforce HTTPS** in the
+   repository's Settings → Pages once the certificate is issued.
 
 ## One-file version
 
