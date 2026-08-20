@@ -14,7 +14,9 @@
 (function () {
   'use strict';
 
-  const API = 'api';            // /admin/api/… , same origin, behind Access
+  const HOME = 'https://michael-grigoryan.com/admin/';
+  const API = '/admin/api';     // absolute: a relative path breaks if the
+                                // page is opened at /admin without the slash
   const FULL = 1800, THUMB = 900, Q_FULL = 0.82, Q_THUMB = 0.8;
 
   const $ = s => document.querySelector(s);
@@ -85,7 +87,10 @@
   }
 
   function go() {
-    location.replace(location.pathname.replace(/[^/]*$/, '') + '?_=' + Date.now());
+    // Always the canonical address. Reloading the current one is no use if the
+    // visitor is on github.io, on www, or on /admin without the trailing slash
+    // — none of those are behind the sign-in.
+    location.replace(HOME + '?_=' + Date.now());
   }
 
   async function call(path, options) {
