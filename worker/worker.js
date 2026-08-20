@@ -22,6 +22,8 @@
  *   ACCESS_AUD     var      the Access application's Application Audience tag
  */
 
+import { ADMIN } from './assets.js';
+
 const GITHUB = 'https://api.github.com';
 
 // only these may ever be written, so a bug or a hostile request cannot reach
@@ -35,18 +37,25 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    // Anything under /admin that is not the API is the admin page itself.
-    // Cloudflare Access has already vetted the visitor by the time we run, so
-    // we just pass it through — but we forbid caching. A cached copy of this
-    // page can outlive its session and would then look, to whoever opens it,
-    // like a working editor.
+    // The admin page is served from here, not from the public web server, so
+    // there is no copy of it on the origin for anyone to fetch directly. Only
+    // requests that came through Cloudflare — and therefore through Access —
+    // can reach this code at all.
     if (!url.pathname.startsWith('/admin/api')) {
-      const res = await fetch(request);
-      const out = new Response(res.body, res);
-      out.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
-      out.headers.set('Pragma', 'no-cache');
-      out.headers.set('X-Robots-Tag', 'noindex, nofollow');
-      return out;
+      const name = url.pathname.replace(/^\/admin\/?/, '');
+      const asset = ADMIN[name];
+      if (!asset) return new Response('Not found', { status: 404 });
+      return new Response(asset.body, {
+        headers: {
+          'Content-Type': asset.type,
+          // never cached: a stale copy outlives its session and then looks,
+          // to whoever opens it, like a working editor
+          'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+          'Pragma': 'no-cache',
+          'X-Robots-Tag': 'noindex, nofollow',
+          'X-Content-Type-Options': 'nosniff',
+        },
+      });
     }
 
     const route = url.pathname.replace(/^\/admin\/api\/?/, '');

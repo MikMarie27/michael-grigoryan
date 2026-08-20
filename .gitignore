@@ -5,3 +5,6 @@ dist/
 images/originals/*.mov
 node_modules/
 .wrangler/
+
+# generated at deploy time from _admin-src/
+worker/assets.js

@@ -3,8 +3,9 @@ main = "worker/worker.js"
 compatibility_date = "2026-08-20"
 workers_dev = false
 
-# Only this path. Everything else on the site is served by GitHub Pages, and
-# Cloudflare Access already stands in front of /admin.
+# Only this path. The rest of the site is static files on GitHub Pages.
+# Cloudflare Access stands in front of /admin, and the admin page itself is
+# served from inside the Worker so no copy of it exists on the public origin.
 routes = [
   { pattern = "michael-grigoryan.com/admin*", zone_name = "michael-grigoryan.com" }
 ]
@@ -14,6 +15,10 @@ GITHUB_REPO   = "MikMarie27/michael-grigoryan"
 GITHUB_BRANCH = "main"
 TEAM_DOMAIN   = "cool-bird-60f5.cloudflareaccess.com"
 ACCESS_AUD    = "700b3c6c91e8935d81eaa43251f31e895d92a80ed466cb5080ebfc15784f4937"
+
+# _admin-src/ is baked into the Worker before every deploy
+[build]
+command = "node worker/build-assets.mjs"
 
 # GITHUB_TOKEN is a secret, never in this file:
 #   npx wrangler secret put GITHUB_TOKEN
