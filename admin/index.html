@@ -12,47 +12,11 @@
 </head>
 <body>
 
-<!-- ————— sign in ————— -->
-<section id="gate" class="gate" hidden>
-  <div class="gate-card">
-    <h1>Edit the site</h1>
-    <p class="gate-sub">Sign in with a GitHub access token. It is stored only in this browser and sent only to GitHub.</p>
-
-    <form id="signin" autocomplete="off">
-      <label>Repository
-        <input id="repo" type="text" inputmode="url" placeholder="username/michael-grigoryan-site" required>
-        <small>Owner and repository name, exactly as it appears in the GitHub URL.</small>
-      </label>
-      <label>Branch
-        <input id="branch" type="text" value="main" required>
-      </label>
-      <label>Access token
-        <input id="token" type="password" placeholder="github_pat_…" required>
-        <small>A fine-grained token for this repository only, with <b>Contents: Read and write</b>. Nothing else.</small>
-      </label>
-      <button class="primary" type="submit">Sign in</button>
-      <p class="gate-err" id="gate-err" hidden></p>
-    </form>
-
-    <details class="help">
-      <summary>How do I make a token?</summary>
-      <ol>
-        <li>On GitHub, open <b>Settings → Developer settings → Personal access tokens → Fine-grained tokens</b>.</li>
-        <li><b>Generate new token.</b> Give it a name and an expiry date.</li>
-        <li>Under <b>Repository access</b> choose <b>Only select repositories</b> and pick this one.</li>
-        <li>Under <b>Permissions → Repository permissions</b> set <b>Contents</b> to <b>Read and write</b>. Leave everything else alone.</li>
-        <li>Generate it and copy the token. It is shown once.</li>
-      </ol>
-    </details>
-
-    <p class="gate-alt"><button type="button" class="linkish" id="offline">Edit without signing in</button> — make changes and download the file instead of publishing.</p>
-  </div>
-</section>
-
 <!-- ————— editor ————— -->
 <div id="app" hidden>
   <header class="bar">
     <strong>Edit the site</strong>
+    <span class="bar-who">signed in as <b id="who">…</b></span>
     <span class="bar-state" id="state"></span>
     <span class="bar-spacer"></span>
     <a class="ghost" href="../" target="_blank" rel="noopener">View site</a>

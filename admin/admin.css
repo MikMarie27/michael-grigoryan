@@ -71,23 +71,6 @@ button.linkish {
 }
 button:disabled { opacity: .5; cursor: default; }
 
-/* ---- sign in ---- */
-
-.gate { min-height: 100dvh; display: grid; place-items: center; padding: 1.25rem; }
-.gate-card {
-  width: min(30rem, 100%);
-  background: var(--panel); border: 1px solid var(--rule);
-  border-radius: 14px; padding: clamp(1.25rem, 5vw, 2rem); box-shadow: var(--shadow);
-}
-.gate-sub { color: var(--ink-2); font-size: .9375rem; }
-.gate-card .primary { width: 100%; }
-.gate-err { color: var(--danger); font-size: .875rem; margin: .9rem 0 0; }
-.gate-alt { margin: 1.25rem 0 0; font-size: .8125rem; color: var(--ink-3); }
-.help { margin-top: 1.25rem; font-size: .8125rem; color: var(--ink-2); }
-.help summary { cursor: pointer; color: var(--accent); }
-.help ol { margin: .75rem 0 0; padding-left: 1.2rem; }
-.help li { margin-bottom: .4rem; }
-
 /* ---- frame ---- */
 
 .bar {
@@ -104,6 +87,8 @@ button:disabled { opacity: .5; cursor: default; }
   border: 1px solid var(--rule-2); border-radius: 999px;
   padding: .6rem 1.1rem; display: inline-flex; align-items: center; min-height: 44px;
 }
+.bar-who { font-size: .8125rem; color: var(--ink-3); }
+.bar-who b { color: var(--ink-2); font-weight: 600; }
 .bar-state { font-size: .8125rem; color: var(--ink-3); }
 .bar-state.dirty { color: var(--accent); }
 

@@ -1,10 +1,12 @@
-/* Admin panel for michaelgrigoryan.art
+/* Admin panel for michael-grigoryan.com
  *
- * Reads content.json, lets you edit it, and writes it back to GitHub. GitHub
- * does the authenticating: every request carries a fine-grained access token
- * scoped to this one repository, and GitHub rejects it if it is wrong, expired
- * or revoked. There is no password check in this file to bypass — the token is
- * the credential, and it never leaves the browser except to api.github.com.
+ * There is no token in here and no password check. Cloudflare Access stands in
+ * front of /admin and only lets through people who proved they own one of the
+ * allowed email addresses. Saving goes to a small Worker of ours, which checks
+ * that Access signature again and holds the only GitHub token, server-side.
+ *
+ * So an editor never has a credential to lose, and taking someone's access away
+ * is deleting their email from the Access policy.
  *
  * Uploaded photographs are resized here, in a canvas, into the same two sizes
  * the site expects: 1800px for the viewer and 900px for the grid.
@@ -12,14 +14,13 @@
 (function () {
   'use strict';
 
-  const API = 'https://api.github.com';
-  const KEY = 'mg-admin';
+  const API = 'api';            // /admin/api/… , same origin, behind Access
   const FULL = 1800, THUMB = 900, Q_FULL = 0.82, Q_THUMB = 0.8;
 
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
 
-  let auth = null;      // { repo, branch, token } — null in offline mode
+  let session = null;   // { email, repo, branch } once Access has identified us
   let content = null;   // the working copy
   let shas = {};        // path -> blob sha, needed to update a file
   let pending = {};     // path -> base64 payload for images not yet published
@@ -27,58 +28,23 @@
 
   /* ---------------- boot ---------------- */
 
-  try { auth = JSON.parse(sessionStorage.getItem(KEY) || localStorage.getItem(KEY)); } catch (e) { auth = null; }
-  auth && auth.token ? start() : showGate();
-
-  function showGate() {
-    $('#gate').hidden = false;
-    $('#app').hidden = true;
-  }
-
-  $('#signin').addEventListener('submit', async e => {
-    e.preventDefault();
-    const err = $('#gate-err');
-    err.hidden = true;
-    const repo = $('#repo').value.trim().replace(/^https?:\/\/github\.com\//, '').replace(/\.git$/, '').replace(/\/$/, '');
-    const cand = { repo, branch: $('#branch').value.trim() || 'main', token: $('#token').value.trim() };
-    if (!/^[\w.-]+\/[\w.-]+$/.test(cand.repo)) return fail(err, 'That does not look like owner/repository.');
-
-    const btn = e.target.querySelector('button');
-    btn.disabled = true; btn.textContent = 'Checking…';
-    try {
-      const r = await fetch(`${API}/repos/${cand.repo}`, { headers: headers(cand) });
-      if (r.status === 401) throw new Error('GitHub did not accept that token.');
-      if (r.status === 404) throw new Error('No such repository, or the token cannot see it.');
-      if (!r.ok) throw new Error('GitHub said ' + r.status + '.');
-      const repoInfo = await r.json();
-      if (!repoInfo.permissions || !repoInfo.permissions.push) {
-        throw new Error('That token can read this repository but not write to it. It needs Contents: Read and write.');
-      }
-      auth = cand;
-      localStorage.setItem(KEY, JSON.stringify(auth));
-      start();
-    } catch (ex) {
-      fail(err, ex.message);
-    } finally {
-      btn.disabled = false; btn.textContent = 'Sign in';
-    }
-  });
-
-  function fail(node, msg) { node.textContent = msg; node.hidden = false; }
-
-  $('#offline').addEventListener('click', () => { auth = null; start(); });
+  start();
 
   $('#signout').addEventListener('click', () => {
     if (dirty && !confirm('There are unpublished changes. Sign out anyway?')) return;
-    localStorage.removeItem(KEY);
-    sessionStorage.removeItem(KEY);
-    location.reload();
+    location.href = '/cdn-cgi/access/logout';
   });
 
   async function start() {
-    $('#gate').hidden = true;
+    try {
+      session = await call('session');
+    } catch (ex) {
+      offline(ex.message);
+      return;
+    }
     $('#app').hidden = false;
-    $('#save').textContent = auth ? 'Publish' : 'Download';
+    $('#save').textContent = 'Publish';
+    $('#who').textContent = session.email;
     try {
       content = await loadContent();
     } catch (ex) {
@@ -89,27 +55,38 @@
     mark(false);
   }
 
-  async function loadContent() {
-    if (auth) {
-      const r = await fetch(path('content.json') + '?ref=' + encodeURIComponent(auth.branch), { headers: headers(auth) });
-      if (r.ok) {
-        const j = await r.json();
-        shas['content.json'] = j.sha;
-        return JSON.parse(decodeURIComponent(escape(atob(j.content.replace(/\n/g, '')))));
-      }
-      if (r.status !== 404) throw new Error('Could not read content.json (' + r.status + ').');
+  // If the Worker is unreachable we still let someone read and export, rather
+  // than showing a dead page — but nothing can be published.
+  async function offline(why) {
+    $('#app').hidden = false;
+    $('#save').textContent = 'Download';
+    $('#who').textContent = 'not signed in';
+    toast(why + ' You can edit and download, but not publish.', 'bad');
+    try {
+      content = await fetch('../content.json', { cache: 'no-cache' }).then(r => r.json());
+    } catch (e) {
+      toast('Could not read content.json.', 'bad');
+      return;
     }
-    const r2 = await fetch('../content.json', { cache: 'no-cache' });
-    if (!r2.ok) throw new Error('Could not read content.json.');
-    return r2.json();
+    fill();
+    mark(false);
   }
 
-  const headers = a => ({
-    Authorization: 'Bearer ' + a.token,
-    Accept: 'application/vnd.github+json',
-    'X-GitHub-Api-Version': '2022-11-28'
-  });
-  const path = p => `${API}/repos/${auth.repo}/contents/${p}`;
+  async function call(path, options) {
+    const r = await fetch(`${API}/${path}`, Object.assign({ credentials: 'same-origin' }, options));
+    let body = {};
+    try { body = await r.json(); } catch (e) { /* empty body */ }
+    if (!r.ok) throw new Error(body.error || `The server said ${r.status}.`);
+    return body;
+  }
+
+  async function loadContent() {
+    const got = await call('file?path=content.json');
+    if (!got.content) throw new Error('content.json is missing from the repository.');
+    shas['content.json'] = got.sha;
+    return JSON.parse(decodeURIComponent(escape(atob(got.content.replace(/\n/g, '')))));
+  }
+
 
   /* ---------------- tabs ---------------- */
 
@@ -233,7 +210,7 @@
     };
     q('[data-act=file]').onchange = e => {
       const f = e.target.files && e.target.files[0];
-      if (f) intake(f, w).then(() => { works(); toast('Photograph ready — press ' + (auth ? 'Publish' : 'Download') + '.', 'good'); });
+      if (f) intake(f, w).then(() => { works(); toast('Photograph ready — press ' + (session ? 'Publish' : 'Download') + '.', 'good'); });
     };
     return node;
   }
@@ -307,7 +284,7 @@
 
   function mark(d) {
     dirty = d;
-    $('#state').textContent = d ? 'Unpublished changes' : (auth ? 'Up to date' : 'Offline');
+    $('#state').textContent = d ? 'Unpublished changes' : (session ? 'Up to date' : 'Not signed in');
     $('#state').classList.toggle('dirty', d);
   }
 
@@ -317,25 +294,23 @@
 
   $('#save').onclick = async () => {
     const btn = $('#save');
-    const json = JSON.stringify(content, null, 2) + '\n';
+    const text = JSON.stringify(content, null, 2) + '\n';
 
-    if (!auth) {
-      download('content.json', json);
-      if (Object.keys(pending).length) {
-        toast('content.json downloaded. New photographs cannot be downloaded offline — sign in to publish them.', 'bad');
-      } else {
-        toast('content.json downloaded. Put it in the site folder.', 'good');
-      }
+    if (!session) {
+      download('content.json', text);
+      toast(Object.keys(pending).length
+        ? 'content.json downloaded. New photographs need a signed-in session to publish.'
+        : 'content.json downloaded.', Object.keys(pending).length ? 'bad' : 'good');
       return;
     }
 
     btn.disabled = true;
-    const files = Object.entries(pending).concat([['content.json', b64(json)]]);
+    const files = Object.entries(pending).concat([['content.json', b64(text)]]);
     try {
       for (let i = 0; i < files.length; i++) {
-        const [p, data] = files[i];
-        btn.textContent = `Publishing ${i + 1}/${files.length}…`;
-        await put(p, data);
+        const [path, data] = files[i];
+        btn.textContent = `Publishing ${i + 1}/${files.length}\u2026`;
+        await put(path, data);
       }
       pending = {};
       mark(false);
@@ -348,25 +323,22 @@
     }
   };
 
-  async function put(p, base64) {
-    if (!(p in shas)) {
-      const head = await fetch(path(p) + '?ref=' + encodeURIComponent(auth.branch), { headers: headers(auth) });
-      if (head.ok) shas[p] = (await head.json()).sha;
+  async function put(path, content64) {
+    if (!(path in shas)) {
+      const got = await call('file?path=' + encodeURIComponent(path));
+      if (got.sha) shas[path] = got.sha;
     }
-    const body = {
-      message: 'Update ' + p + ' from the admin panel',
-      content: base64,
-      branch: auth.branch
-    };
-    if (shas[p]) body.sha = shas[p];
-
-    const r = await fetch(path(p), { method: 'PUT', headers: headers(auth), body: JSON.stringify(body) });
-    if (r.status === 409 || r.status === 422) {
-      delete shas[p];
-      throw new Error('Someone else changed ' + p + ' in the meantime. Reload the page and try again.');
-    }
-    if (!r.ok) throw new Error('GitHub refused to save ' + p + ' (' + r.status + ').');
-    shas[p] = (await r.json()).content.sha;
+    const saved = await call('file', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        path,
+        content: content64,
+        sha: shas[path] || undefined,
+        message: 'Update ' + path + ' from the admin panel',
+      }),
+    });
+    shas[path] = saved.sha;
   }
 
   const b64 = str => btoa(unescape(encodeURIComponent(str)));
