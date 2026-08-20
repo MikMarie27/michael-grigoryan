@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 
-Sitemap: https://mikmarie27.github.io/michael-grigoryan/sitemap.xml
+Sitemap: https://michael-grigoryan.com/sitemap.xml
