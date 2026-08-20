@@ -1,0 +1,19 @@
+name = "mg-admin-api"
+main = "worker/worker.js"
+compatibility_date = "2026-08-20"
+workers_dev = false
+
+# Only this path. Everything else on the site is served by GitHub Pages, and
+# Cloudflare Access already stands in front of /admin.
+routes = [
+  { pattern = "michael-grigoryan.com/admin/api/*", zone_name = "michael-grigoryan.com" }
+]
+
+[vars]
+GITHUB_REPO   = "MikMarie27/michael-grigoryan"
+GITHUB_BRANCH = "main"
+TEAM_DOMAIN   = "cool-bird-60f5.cloudflareaccess.com"
+ACCESS_AUD    = "700b3c6c91e8935d81eaa43251f31e895d92a80ed466cb5080ebfc15784f4937"
+
+# GITHUB_TOKEN is a secret, never in this file:
+#   npx wrangler secret put GITHUB_TOKEN
