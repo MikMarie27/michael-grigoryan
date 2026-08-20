@@ -21,6 +21,44 @@ with no network access. **The admin only works on the deployed site.**
 Every save from the admin panel commits to that repository, and GitHub Pages
 rebuilds the site within about a minute. Nothing else has to be run.
 
+## Planned: sign in with an email code instead of a token
+
+The token below works, but it is fiddly and it lives in the browser. The
+replacement is **Cloudflare Access** sitting in front of `/admin/`:
+
+- Visiting `/admin/` asks for an email address.
+- Only two addresses are allowed — Marie's and Michael's.
+- Cloudflare emails a six-digit code. Enter it and you are in, for a week.
+- No password to invent, remember or store. No SMS bill.
+
+The security rests on their Gmail accounts, which already have Google's own
+password and two-factor protection. To break in you would have to break into
+Gmail first.
+
+Nobody who is not on the list can even load the page — the block happens at
+Cloudflare's edge, before the request reaches the site.
+
+### Setting it up
+
+1. Create a free Cloudflare account.
+2. Add `michael-grigoryan.com` as a site (Free plan).
+3. Change the nameservers at GoDaddy to the two Cloudflare gives you. The A
+   records and the `www` CNAME come across unchanged, so the site keeps working.
+4. **Zero Trust → Access → Applications → Add a self-hosted application**
+   - Domain: `michael-grigoryan.com`, path: `admin`
+   - Identity provider: **One-time PIN** (on by default, nothing to configure)
+   - Policy: *Allow* → *Emails* → the two addresses
+5. Session duration: 1 week is a sensible default.
+
+Free for up to 50 users.
+
+### Afterwards
+
+The GitHub token still authorises the actual saving, and it is still stored in
+the browser — but now only two people can ever reach the page that holds it.
+Moving the token into a Cloudflare Worker so it never reaches the browser at all
+is a further step, worth doing if the site ever has more editors.
+
 ## Making Michael a token
 
 This is his key to the site. It takes two minutes and he should do it himself,
