@@ -71,6 +71,18 @@ button.linkish {
 }
 button:disabled { opacity: .5; cursor: default; }
 
+/* ---- locked out ---- */
+
+.locked {
+  min-height: 100dvh;
+  display: grid; place-content: center; justify-items: center;
+  gap: .75rem; padding: 2rem 1.25rem; text-align: center;
+}
+.locked h1 { font-size: 1.375rem; margin: 0; }
+.locked p { margin: 0; color: var(--ink-2); font-size: .9375rem; }
+.locked .why { color: var(--ink-3); font-size: .8125rem; max-width: 28rem; }
+.locked button { margin-top: .5rem; }
+
 /* ---- frame ---- */
 
 .bar {

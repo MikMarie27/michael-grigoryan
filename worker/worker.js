@@ -34,6 +34,21 @@ const WRITABLE = [
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
+    // Anything under /admin that is not the API is the admin page itself.
+    // Cloudflare Access has already vetted the visitor by the time we run, so
+    // we just pass it through — but we forbid caching. A cached copy of this
+    // page can outlive its session and would then look, to whoever opens it,
+    // like a working editor.
+    if (!url.pathname.startsWith('/admin/api')) {
+      const res = await fetch(request);
+      const out = new Response(res.body, res);
+      out.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+      out.headers.set('Pragma', 'no-cache');
+      out.headers.set('X-Robots-Tag', 'noindex, nofollow');
+      return out;
+    }
+
     const route = url.pathname.replace(/^\/admin\/api\/?/, '');
 
     let email;

@@ -6,7 +6,7 @@ workers_dev = false
 # Only this path. Everything else on the site is served by GitHub Pages, and
 # Cloudflare Access already stands in front of /admin.
 routes = [
-  { pattern = "michael-grigoryan.com/admin/api/*", zone_name = "michael-grigoryan.com" }
+  { pattern = "michael-grigoryan.com/admin*", zone_name = "michael-grigoryan.com" }
 ]
 
 [vars]

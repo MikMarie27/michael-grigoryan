@@ -39,11 +39,10 @@
     try {
       session = await call('session');
     } catch (ex) {
-      offline(ex.message);
-      return;
+      denied(ex.message);
+      return;         // nothing is rendered, ever, without a verified session
     }
     $('#app').hidden = false;
-    $('#save').textContent = 'Publish';
     $('#who').textContent = session.email;
     try {
       content = await loadContent();
@@ -55,21 +54,38 @@
     mark(false);
   }
 
-  // If the Worker is unreachable we still let someone read and export, rather
-  // than showing a dead page — but nothing can be published.
-  async function offline(why) {
-    $('#app').hidden = false;
-    $('#save').textContent = 'Download';
-    $('#who').textContent = 'not signed in';
-    toast(why + ' You can edit and download, but not publish.', 'bad');
-    try {
-      content = await fetch('../content.json', { cache: 'no-cache' }).then(r => r.json());
-    } catch (e) {
-      toast('Could not read content.json.', 'bad');
-      return;
+  /* Not signed in — show nothing and send them to the sign-in page.
+   *
+   * This deliberately does NOT fall back to a read-only editor. A copy of this
+   * page can outlive its session: cached by a browser, saved to disk, left open
+   * in an old tab. If it rendered the editor in those cases it would look to a
+   * stranger exactly like the real thing. So it renders nothing at all.
+   *
+   * Reloading over the network is what triggers the sign-in: Cloudflare Access
+   * intercepts the request before it ever reaches this page. The cache-buster
+   * makes sure a cached copy cannot satisfy the reload. */
+  function denied(why) {
+    document.body.innerHTML = '';
+    const box = document.createElement('div');
+    box.className = 'locked';
+    box.innerHTML =
+      '<h1>Sign in to edit</h1>' +
+      '<p>This page is only for Michael and Marie.</p>' +
+      '<button class="primary" type="button">Sign in</button>' +
+      '<p class="why"></p>';
+    box.querySelector('.why').textContent = why || '';
+    box.querySelector('button').onclick = go;
+    document.body.append(box);
+
+    // one automatic attempt, then leave it to the button so we cannot loop
+    if (!sessionStorage.getItem('mg-tried')) {
+      sessionStorage.setItem('mg-tried', '1');
+      go();
     }
-    fill();
-    mark(false);
+  }
+
+  function go() {
+    location.replace(location.pathname.replace(/[^/]*$/, '') + '?_=' + Date.now());
   }
 
   async function call(path, options) {
@@ -210,7 +226,7 @@
     };
     q('[data-act=file]').onchange = e => {
       const f = e.target.files && e.target.files[0];
-      if (f) intake(f, w).then(() => { works(); toast('Photograph ready — press ' + (session ? 'Publish' : 'Download') + '.', 'good'); });
+      if (f) intake(f, w).then(() => { works(); toast('Photograph ready — press Publish.', 'good'); });
     };
     return node;
   }
@@ -284,7 +300,7 @@
 
   function mark(d) {
     dirty = d;
-    $('#state').textContent = d ? 'Unpublished changes' : (session ? 'Up to date' : 'Not signed in');
+    $('#state').textContent = d ? 'Unpublished changes' : 'Up to date';
     $('#state').classList.toggle('dirty', d);
   }
 
@@ -295,14 +311,6 @@
   $('#save').onclick = async () => {
     const btn = $('#save');
     const text = JSON.stringify(content, null, 2) + '\n';
-
-    if (!session) {
-      download('content.json', text);
-      toast(Object.keys(pending).length
-        ? 'content.json downloaded. New photographs need a signed-in session to publish.'
-        : 'content.json downloaded.', Object.keys(pending).length ? 'bad' : 'good');
-      return;
-    }
 
     btn.disabled = true;
     const files = Object.entries(pending).concat([['content.json', b64(text)]]);
@@ -343,13 +351,6 @@
 
   const b64 = str => btoa(unescape(encodeURIComponent(str)));
 
-  function download(name, text) {
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob([text], { type: 'application/json' }));
-    a.download = name;
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(a.href), 5000);
-  }
 
   /* ---------------- toast ---------------- */
 
